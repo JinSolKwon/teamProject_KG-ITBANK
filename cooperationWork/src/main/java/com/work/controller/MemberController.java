@@ -55,4 +55,5 @@ public class MemberController {
         mav.addObject("msg", "logout");
         return mav;
     }
+    
 }

@@ -1,0 +1,123 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  
+  height: 50px;
+  padding: 1rem;
+  color: MediumOrchid;
+  background: white;
+  font-weight: bolder;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@font-face {
+      src : url("../font/BMJUA_ttf.ttf");
+      font-family: "jua";
+}
+
+header a {
+	color: MediumOrchid;
+	margin-right: 30px;
+	font-size: 150%;
+	font-family: "jua";
+}
+
+a:hover {
+	text-decoration:none;
+}
+
+header nav {
+	margin-top: 20px;
+}
+h1 {
+  font-family:"jua";
+  margin: 0;
+  color: MediumOrchid;
+  font-weight : bolder;
+}
+
+body {
+  padding-top: 75px;
+  background: linear-gradient(to top right, #80cbc4, #e1bee7, #80ddea, #d1c4e9);
+  text-align: center;
+  margin: auto;
+  overflow: hidden;
+  align-items: center;
+}
+
+body, html {
+  height: 200%;
+  font-family:"jua";
+}
+
+.footer {
+	font-family: "jua";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+	padding: 15px 0;
+	text-align: center;
+	color: black;
+	background: white;
+	font-weight: bolder;
+}
+
+.btn {
+	width: 100px;
+	margin: auto;
+	color: white;
+	background: MediumOrchid;
+	border: 0;
+	outline: 0;
+	margin-left:30px;
+	margin-right: 30px;
+}
+
+.btn2 {
+	width : 300px;
+	margin-top: 40px;
+	margin-left: 30px;
+	margin-bottom: 20px;
+	height : 50px;
+	color: white;
+	background: MediumOrchid;
+	border: 0;
+	outline: 0;
+	font-size: xx-large;
+	border-radius: 5px;
+}
+
+.spacelist {
+	margin-bottom: -1px;
+	text-align: left;
+	font-size: large;
+	border: 1px solid #444444;
+}
+
+#ble {
+	margin-left:30px;
+	margin-bottom: -1px;
+}
+
+#scroll {
+	max-height: 113px; 
+	overflow-y:auto; 
+	width:551px;
+	border:1px solid black;
+	margin-left:30px;
+}
+
+table thead tr th{
+	background:white;
+}
+
+th, td { 
+	padding: 5px; 
+	border-bottom: 1px solid #444444;
+	text-align: left;
+}
