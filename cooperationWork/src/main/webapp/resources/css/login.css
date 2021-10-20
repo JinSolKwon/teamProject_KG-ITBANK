@@ -6,7 +6,7 @@ header {
   
   height: 50px;
   padding: 1rem;
-  color: MediumOrchid;
+  color: saddlebrown;
   background: white;
   font-weight: bolder;
   display: flex;
@@ -20,7 +20,7 @@ header {
 }
 
 header a {
-	color: MediumOrchid;
+	color: saddlebrown;
 	margin-right: 30px;
 	font-size: 150%;
 	font-family: "jua";
@@ -36,7 +36,7 @@ header nav {
 h1 {
   font-family:"jua";
   margin: 0;
-  color: MediumOrchid;
+  color: saddlebrown;
   font-weight : bolder;
 }
 
@@ -51,7 +51,7 @@ main {
 
 body {
   padding-top: 75px;
-  background: linear-gradient(to top right, #80cbc4, #e1bee7, #80ddea, #d1c4e9);
+  background: #eacda3;  /* fallback for old browsers */
   text-align: center;
   margin: auto;
   overflow: hidden;
@@ -92,7 +92,7 @@ body, html {
 	width: 100px;
 	margin: auto;
 	color: white;
-	background: MediumOrchid;
+	background: saddlebrown;
 	border: 0;
 	outline: 0;
 	margin-left:30px;

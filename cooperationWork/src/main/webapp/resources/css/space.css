@@ -6,7 +6,7 @@ header {
   
   height: 50px;
   padding: 1rem;
-  color: MediumOrchid;
+  color: saddlebrown;
   background: white;
   font-weight: bolder;
   display: flex;
@@ -20,7 +20,7 @@ header {
 }
 
 header a {
-	color: MediumOrchid;
+	color: saddlebrown;
 	margin-right: 30px;
 	font-size: 150%;
 	font-family: "jua";
@@ -36,13 +36,13 @@ header nav {
 h1 {
   font-family:"jua";
   margin: 0;
-  color: MediumOrchid;
+  color: saddlebrown;
   font-weight : bolder;
 }
 
 body {
   padding-top: 75px;
-  background: linear-gradient(to top right, #80cbc4, #e1bee7, #80ddea, #d1c4e9);
+  background: #eacda3;
   text-align: center;
   margin: auto;
   overflow: hidden;
@@ -60,7 +60,6 @@ body, html {
     left: 0;
     bottom: 0;
     width: 100%;
-	padding: 15px 0;
 	text-align: center;
 	color: black;
 	background: white;
@@ -71,7 +70,7 @@ body, html {
 	width: 100px;
 	margin: auto;
 	color: white;
-	background: MediumOrchid;
+	background: saddlebrown;
 	border: 0;
 	outline: 0;
 	margin-left:30px;
@@ -81,11 +80,11 @@ body, html {
 .btn2 {
 	width : 300px;
 	margin-top: 40px;
-	margin-left: 30px;
+	margin-left: 170px;
 	margin-bottom: 20px;
 	height : 50px;
 	color: white;
-	background: MediumOrchid;
+	background: saddlebrown;
 	border: 0;
 	outline: 0;
 	font-size: xx-large;
@@ -96,12 +95,14 @@ body, html {
 	margin-bottom: -1px;
 	text-align: left;
 	font-size: large;
+	font-weight: normal;
 	border: 1px solid #444444;
 }
 
 #ble {
-	margin-left:30px;
+	margin-left:170px;
 	margin-bottom: -1px;
+	font-weight: normal;
 }
 
 #scroll {
@@ -109,15 +110,19 @@ body, html {
 	overflow-y:auto; 
 	width:551px;
 	border:1px solid black;
-	margin-left:30px;
+	margin-left:170px;
+	font-weight: normal;
 }
 
 table thead tr th{
-	background:white;
+	background: #603813;
+	color:white;
+	font-weight: normal;
 }
 
 th, td { 
 	padding: 5px; 
 	border-bottom: 1px solid #444444;
 	text-align: left;
+	font-weight: normal;
 }

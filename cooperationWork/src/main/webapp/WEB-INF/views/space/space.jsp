@@ -8,7 +8,7 @@
 <script>
 	setTimeout(function(){
 	location.reload();
-	},3000); // 3000밀리초 = 3초
+	},1000); // 1000밀리초 = 3초
 </script>	
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,16 +17,14 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<link href="${pageContext.request.contextPath}/resources/css/space.css"
-	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/space.css" rel="stylesheet" type="text/css">
 <title>워크스페이스</title>
 </head>
 <body>
 	<%@ include file="../include/spaceMenu.jsp"%>
-	
 		<img src="${pageContext.request.contextPath}/resources/images/pngegg.png" 
-			style="float:right; width:600px; height:300px; margin-right:100px;">
-	<div style="text-align: left; margin-left: 30px; margin-top: 40px;">
+			style="float:right; width:500px; height:500px; margin-right:200px;margin-top:130px;">
+	<div style="text-align: left; margin-left:100px; margin-top: 40px;">
 		<h2>
 			TASKWITH는 팀이 함께 대화하고 일할 수 있는 홈그라운드를 제공합니다.<br>
 			<br> 새 워크스페이스를 만드시려면 아래 버튼을 클릭하세요.
@@ -46,8 +44,6 @@
 			</thead>
 		</table>
 	</div>
-	<img src="${pageContext.request.contextPath}/resources/images/cor1.png" 
-			style="float:right; width:600px; height:300px; margin-top: 50px; margin-right:100px;">
 	<div id="scroll">
 		<table class="spacelist">
 			<tbody>
