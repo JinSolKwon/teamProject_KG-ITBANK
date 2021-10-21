@@ -4,16 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-<header class="shadow"> 
-  <a href="${pageContext.request.contextPath}/space/space">
+
+<header class="shadow">
+  <a href="${pageContext.request.contextPath}/member/login">
 	<img src="${pageContext.request.contextPath}/resources/images/leftTop.png"
 	style="height:50px;width:250px;margin-top:3px;">
   </a>
   <nav>
-    <a class="login1" href="#">로그아웃</a>
-    <a class="login2" href="${pageContext.request.contextPath}/#">회원정보 변경</a>
+    <a class="login1" href="${pageContext.request.contextPath}/member/login">로그인</a>
+    <a class="login2" href="${pageContext.request.contextPath}/regist">회원가입</a>
   </nav>
 </header>
 

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="ko" dir="ltr">
@@ -17,27 +17,29 @@
 </head>
 <body>
 	<nav class="shadow">
-	<span class="write-setting" style="color:white; float:right;">
-						<i class='bx bx-log-out'></i>
-					</span>
+		<span class="write-setting"
+			style="float: right; margin-right: 20px; margin-top: 15px;">
+			<img src="${pageContext.request.contextPath}/resources/images/logout.png"
+			 	 style="height: 40px; width: 40px;">
+		</span>
 		<div class="navbar">
 			<div class="nav-links">
-				<div class="sidebar-logo">
-					<span class="logo-name">CodingLab</span> <i class='bx bx-x'></i>
-				</div>
-				<ul class="links" style="margin-left:30px;">
-					<li style="color:white; font-size:30px; margin-top:3px;">새 워크스페이스1</li>
+				<ul class="links" style="margin-left: 30px;">
+					<li style="color: white; font-size: 30px; margin-top: 3px;">새
+						워크스페이스1</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
 	<div class="sidebar close">
-		<div class="logo-details" style="font-size:50px; margin-left:12px;margin-top:15px;">
-			<a href="${pageContext.request.contextPath}/space/space"><i class='fas fa-arrow-circle-left'
-			style="color:white;"></i>
-			</a>
-			&nbsp&nbsp&nbsp<span class="logo_name" style="font-size:30px; margin-bottom:10px;">TASKWITH</span>
+		<div class="logo-details" style="font-size: 50px; margin-left: 12px; margin-top: 15px;">
+			<a href="${pageContext.request.contextPath}/space/space">
+				<i class='fas fa-arrow-circle-left' style="color: white;"></i> 
+			</a> 
+			<img class="logo" src="${pageContext.request.contextPath}/resources/images/workspace.png"
+				 style="height: 35px; width: 35px; margin-bottom: 15px; margin-left: 10px;">
+			<span class="logo_name" style="font-size: 30px; margin-bottom: 15px;">TASKWITH</span>
 		</div>
 		<ul class="nav-links">
 			<li><a href="#"> <i class='bx bx-grid-alt'></i> <span
@@ -86,8 +88,7 @@
 				</ul></li>
 			<li>
 				<div class="iocn-link">
-					<a href="#"> <i class='bx bx-plug'></i> <span
-						class="link_name">Plugins</span>
+					<a href="#"> <i class='bx bx-plug'></i> <span class="link_name">Plugins</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
@@ -117,7 +118,7 @@
 				</ul></li>
 			<li>
 				<div class="profile-details">
-					
+
 					<i class='bx bx-log-out'></i>
 				</div>
 			</li>
@@ -125,7 +126,8 @@
 	</div>
 	<section class="home-section">
 		<div class="home-content">
-			<i class='bx bx-menu' style="color:white; z-index:10000; margin-top:10px"></i>
+			<i class='bx bx-menu'
+				style="color: white; z-index: 10000; margin-top: 10px"></i>
 		</div>
 	</section>
 	<script>

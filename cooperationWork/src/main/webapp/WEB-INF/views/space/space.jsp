@@ -23,7 +23,7 @@
 </head>
 <body>
 	<%@ include file="../include/spaceMenu.jsp"%>
-		<img src="${pageContext.request.contextPath}/resources/images/pngegg.png" 
+		<img src="${pageContext.request.contextPath}/resources/images/space.png" 
 			style="float:right; width:500px; height:500px; margin-right:200px;margin-top:130px;">
 	<div style="text-align: left; margin-left:100px; margin-top: 40px;">
 		<h2>
