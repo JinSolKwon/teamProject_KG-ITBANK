@@ -13,5 +13,6 @@
 	<typeAliases> 
 		<typeAlias alias="memberVo" type="com.work.dto.MemberVo"/>
 		<typeAlias alias="spaceVo" type="com.work.dto.SpaceVo"/>
+		<typeAlias alias="workVo" type="com.work.dto.WorkVo"/>
 	</typeAliases>
 </configuration>

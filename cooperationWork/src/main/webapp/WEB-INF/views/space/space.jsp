@@ -11,6 +11,7 @@
 	},1000); // 1000밀리초 = 3초
 </script>	
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet"
@@ -18,7 +19,7 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 <link href="${pageContext.request.contextPath}/resources/css/space.css" rel="stylesheet" type="text/css">
-<title>워크스페이스</title>
+<title>TASKWITH</title>
 </head>
 <body>
 	<%@ include file="../include/spaceMenu.jsp"%>
@@ -48,7 +49,7 @@
 		<table class="spacelist">
 			<tbody>
 				<tr>
-					<td style="width: 450px;">새워크스페이스1(관리자 이름)</td>
+					<td style="width: 450px;">새 워크스페이스1(관리자 이름)</td>
 					<td style="width: 100px;">입장 및 삭제</td>
 				</tr>
 				<tr>

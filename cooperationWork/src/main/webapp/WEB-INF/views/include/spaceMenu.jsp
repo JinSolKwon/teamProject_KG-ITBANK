@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
-<header>
+<header class="shadow"> 
   <a href="${pageContext.request.contextPath}/space/space"><h1>TASKWITH</h1></a>
   <nav>
     <a class="login1" href="#">로그아웃</a>

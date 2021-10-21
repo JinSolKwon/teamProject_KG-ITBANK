@@ -7,8 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<header>
-  <a href="${pageContext.request.contextPath}/member/login"><h1>TASKWITH</h1></a>
+
+<header class="shadow">
+  <a href="${pageContext.request.contextPath}/member/login">
+	<img src="${pageContext.request.contextPath}/resources/images/left-top.png"
+	style="height:50px;width:250px;">
+  </a>
   <nav>
     <a class="login1" href="${pageContext.request.contextPath}/member/login">로그인</a>
     <a class="login2" href="${pageContext.request.contextPath}/regist">회원가입</a>

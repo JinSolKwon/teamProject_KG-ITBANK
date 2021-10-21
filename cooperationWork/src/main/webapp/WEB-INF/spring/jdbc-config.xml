@@ -37,6 +37,7 @@
 			<list>
 				<value>classpath:config/memberMapper.xml</value>
 				<value>classpath:config/spaceMapper.xml</value>
+				<value>classpath:config/workMapper.xml</value>
 			</list> 
 		</property>
 	</bean>
