@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
-<html lang="ko" dir="ltr">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
@@ -17,105 +17,76 @@
 </head>
 <body>
 	<nav class="shadow">
-		<span class="write-setting"
-			style="float: right; margin-right: 20px; margin-top: 15px;">
-			<img src="${pageContext.request.contextPath}/resources/images/logout.png"
-			 	 style="height: 40px; width: 40px;">
-		</span>
+		<div id="blogMenu">
+			<ul>
+			<li><a href="#"><img src="${pageContext.request.contextPath}/resources/images/vert.png"
+	style="height:40px;width:40px;margin-top:15px;"></a>
+				<ul style="margin-top:15px;paddle-right:300px;">
+					<li><a href="#">Web Design</a></li>
+					<li><a href="#">Login Forms</a></li>
+					<li><a href="#">Card Design</a></li>
+				</ul> 
+				</li>
+			</ul>
+		</div>
+			<h3 style="color:white; float:right; margin-top:20px;">서현진 님</h3>
 		<div class="navbar">
 			<div class="nav-links">
-				<ul class="links" style="margin-left: 30px;">
-					<li style="color: white; font-size: 30px; margin-top: 3px;">새
-						워크스페이스1</li>
+				<ul class="links">
+					<li style="color: white; font-size: 30px; margin-top: 3px; margin-left: 20px">새 워크스페이스1</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
 	<div class="sidebar close">
-		<div class="logo-details" style="font-size: 50px; margin-left: 12px; margin-top: 15px;">
-			<a href="${pageContext.request.contextPath}/space/space">
-				<i class='fas fa-arrow-circle-left' style="color: white;"></i> 
-			</a> 
-			<img class="logo" src="${pageContext.request.contextPath}/resources/images/workspace.png"
-				 style="height: 35px; width: 35px; margin-bottom: 15px; margin-left: 10px;">
+		<div class="logo-details"
+			style="font-size: 50px; margin-left: 12px; margin-top: 15px;">
+			<a href="${pageContext.request.contextPath}/space/space"> <i
+				class='fas fa-arrow-circle-left' style="color: white;"></i>
+			</a> <img class="logo"
+				src="${pageContext.request.contextPath}/resources/images/workspace.png"
+				style="height: 35px; width: 35px; margin-bottom: 15px; margin-left: 10px;">
 			<span class="logo_name" style="font-size: 30px; margin-bottom: 15px;">TASKWITH</span>
 		</div>
 		<ul class="nav-links">
-			<li><a href="#"> <i class='bx bx-grid-alt'></i> <span
-					class="link_name">Dashboard</span>
-			</a>
-				<ul class="sub-menu blank">
-					<li><a class="link_name" href="#">Category</a></li>
-				</ul></li>
+
 			<li>
 				<div class="iocn-link">
 					<a href="#"> <i class='bx bx-collection'></i> <span
-						class="link_name">Category</span>
+						class="link_name">작업관리</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
-					<li><a class="link_name" href="#">Category</a></li>
-					<li><a href="#">HTML & CSS</a></li>
-					<li><a href="#">JavaScript</a></li>
-					<li><a href="#">PHP & MySQL</a></li>
+					<li><a class="link_name" href="#">작업관리</a></li>
+					<li><a href="#">게시판</a></li>
+					<li><a href="#">캘린더</a></li>
+					<li><a href="#">칸반보드</a></li>
 				</ul>
 			</li>
 			<li>
 				<div class="iocn-link">
 					<a href="#"> <i class='bx bx-book-alt'></i> <span
-						class="link_name">Posts</span>
+						class="link_name">파일관리</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
-					<li><a class="link_name" href="#">Posts</a></li>
-					<li><a href="#">Web Design</a></li>
-					<li><a href="#">Login Form</a></li>
-					<li><a href="#">Card Design</a></li>
+					<li><a class="link_name" href="#">파일관리</a></li>
+					<li><a href="#">파일브라우저</a></li>
 				</ul>
 			</li>
-			<li><a href="#"> <i class='bx bx-pie-chart-alt-2'></i> <span
-					class="link_name">Analytics</span>
-			</a>
-				<ul class="sub-menu blank">
-					<li><a class="link_name" href="#">Analytics</a></li>
-				</ul></li>
-			<li><a href="#"> <i class='bx bx-line-chart'></i> <span
-					class="link_name">Chart</span>
-			</a>
-				<ul class="sub-menu blank">
-					<li><a class="link_name" href="#">Chart</a></li>
-				</ul></li>
 			<li>
 				<div class="iocn-link">
-					<a href="#"> <i class='bx bx-plug'></i> <span class="link_name">Plugins</span>
+					<a href="#"> <i class='bx bx-plug'></i> <span class="link_name">메신저</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
-					<li><a class="link_name" href="#">Plugins</a></li>
+					<li><a class="link_name" href="#">메신저</a></li>
 					<li><a href="#">UI Face</a></li>
 					<li><a href="#">Pigments</a></li>
 					<li><a href="#">Box Icons</a></li>
 				</ul>
 			</li>
-			<li><a href="#"> <i class='bx bx-compass'></i> <span
-					class="link_name">Explore</span>
-			</a>
-				<ul class="sub-menu blank">
-					<li><a class="link_name" href="#">Explore</a></li>
-				</ul></li>
-			<li><a href="#"> <i class='bx bx-history'></i> <span
-					class="link_name">History</span>
-			</a>
-				<ul class="sub-menu blank">
-					<li><a class="link_name" href="#">History</a></li>
-				</ul></li>
-			<li><a href="#"> <i class='bx bx-cog'></i> <span
-					class="link_name">Setting</span>
-			</a>
-				<ul class="sub-menu blank">
-					<li><a class="link_name" href="#">Setting</a></li>
-				</ul></li>
 			<li>
 				<div class="profile-details">
 

@@ -340,7 +340,7 @@ nav .navbar .links li .sub-menu{
   top: 70px;
   left: 0;
   line-height: 40px;
-  background: #3E8DA8;
+  background: #1d1b31;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 0 0 4px 4px;
   display: none;
@@ -399,7 +399,7 @@ nav .navbar .links li:hover .js-sub-menu{
   top: 80px;
   height: 60px;
   width: 300px;
-  background: #3E8DA8;
+  background: #1d1b31;
   border-radius: 6px;
   opacity: 0;
   pointer-events: none;
@@ -409,14 +409,14 @@ nav .navbar .links li:hover .js-sub-menu{
   top: 65px;
   opacity: 1;
   pointer-events: auto;
-  background: #3E8DA8;
+  background: #1d1b31;
 }
 .search-box .input-box::before{
   content: '';
   position: absolute;
   height: 20px;
   width: 20px;
-  background: #3E8DA8;
+  background: #1d1b31;
   right: 10px;
   top: -6px;
   transform: rotate(45deg);
@@ -471,7 +471,7 @@ nav .navbar .links li:hover .js-sub-menu{
     display: block;
     max-width: 270px;
     width: 100%;
-    background:  #3E8DA8;
+    background:  ;
     line-height: 40px;
     padding: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -560,4 +560,45 @@ nav .navbar .links li .sub-menu li{
   nav .navbar .nav-links{
   max-width: 100%;
 } 
+}
+
+#blogMenu {
+	float:right;
+	margin:0px 5px 3px 5px;
+	padding:0 0 3px 0;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background-color:#1d1b31;
+}
+
+#blogMenu ul li {
+	float:left;
+	list-style-type:none;
+	text-align:left;
+}
+
+#blogMenu a {
+	height:16px;
+	color:white;
+	font-family:jua;
+	font-size:20px;
+	padding:0 10px 0 10px;
+	text-decoration:none;
+	
+}
+
+#blogMenu ul ul {
+	/* display:none; */
+	position:absolute;
+	background-color:#1d1b31;
+}
+
+#blogMenu ul li:hover ul {
+	display: block;
+}
+
+#blogMenu ul ul li {
+	float:none;
 }
