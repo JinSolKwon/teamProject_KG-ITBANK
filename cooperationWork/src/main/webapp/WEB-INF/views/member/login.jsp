@@ -20,7 +20,7 @@
                 <div class="card login-form border-0">
                     <div class="card-body">
 				        <h1><img src="${pageContext.request.contextPath}/resources/images/center.png" 
-				        		 style="height:100px;width:300px;"></h1><br><br>
+				        		 style="height:100px;width:230px;"></h1><br><br>
                         <form th:action="@{#}" method="POST" class="form-signin">
                             <input type="text" id="username" name="username" placeholder="ID를 입력하세요" class="form-control my-3 login-text" style="margin:auto; width:300px;" autofocus>
                             <input type="password" placeholder="PW를 입력하세요" id="password" name="password" class="form-control mb-3 login-text" style="margin:auto; width:300px;">

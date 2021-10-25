@@ -566,6 +566,10 @@ nav .navbar .links li .sub-menu li{
 	float:right;
 	margin:0px 5px 3px 5px;
 	padding:0 0 3px 0;
+	box-shadow: 0px 0px 15px rgba(0,0,0,.3);
+	-moz-box-shadow: 0px 0px 15px rgba(0,0,0,.3);
+	-webkit-box-shadow: 0px 0px 15px rgba(0,0,0,.3);
+	-o-box-shadow: 0px 0px 15px rgba(0,0,0,.3);
 	-moz-border-radius: 3px;
 	-khtml-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -590,8 +594,9 @@ nav .navbar .links li .sub-menu li{
 }
 
 #blogMenu ul ul {
-	/* display:none; */
-	position:absolute;
+	display:none;
+	position:relative;
+	left:-170px;
 	background-color:#1d1b31;
 }
 

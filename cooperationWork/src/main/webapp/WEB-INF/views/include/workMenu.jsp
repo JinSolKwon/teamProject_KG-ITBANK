@@ -19,21 +19,19 @@
 	<nav class="shadow">
 		<div id="blogMenu">
 			<ul>
-			<li><a href="#"><img src="${pageContext.request.contextPath}/resources/images/vert.png"
+			<li style="height:40px;width:40px;"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/vert.png"
 	style="height:40px;width:40px;margin-top:15px;"></a>
-				<ul style="margin-top:15px;paddle-right:300px;">
-					<li><a href="#">Web Design</a></li>
-					<li><a href="#">Login Forms</a></li>
-					<li><a href="#">Card Design</a></li>
+				<ul style="width:230px;">
+					<li style="margin-top:15px;"><a href="#">워크스페이스 메인으로</a></li>
+					<li><a href="#">로그아웃</a></li>
 				</ul> 
-				</li>
 			</ul>
 		</div>
 			<h3 style="color:white; float:right; margin-top:20px;">서현진 님</h3>
 		<div class="navbar">
 			<div class="nav-links">
 				<ul class="links">
-					<li style="color: white; font-size: 30px; margin-top: 3px; margin-left: 20px">새 워크스페이스1</li>
+					<li style="color: white; font-size: 30px; margin-top: 3px; margin-left: 70px;">새 워크스페이스1</li>
 				</ul>
 			</div>
 		</div>
@@ -53,7 +51,7 @@
 
 			<li>
 				<div class="iocn-link">
-					<a href="#"> <i class='bx bx-collection'></i> <span
+					<a href="#" style="height:50px;"> <i class='bx bx-collection'></i> <span
 						class="link_name">작업관리</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
@@ -66,7 +64,7 @@
 			</li>
 			<li>
 				<div class="iocn-link">
-					<a href="#"> <i class='bx bx-book-alt'></i> <span
+					<a href="#" style="height:50px;"> <i class='bx bx-book-alt'></i> <span
 						class="link_name">파일관리</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
@@ -77,14 +75,14 @@
 			</li>
 			<li>
 				<div class="iocn-link">
-					<a href="#"> <i class='bx bx-plug'></i> <span class="link_name">메신저</span>
+					<a href="#" style="height:50px;"> <i class='bx bx-plug'></i> <span class="link_name">메신저</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
 					<li><a class="link_name" href="#">메신저</a></li>
-					<li><a href="#">UI Face</a></li>
-					<li><a href="#">Pigments</a></li>
-					<li><a href="#">Box Icons</a></li>
+					<li><a href="#">단체 톡방</a></li>
+					<li><a href="#">개인 톡방</a></li>
+					<li><a href="#">추가</a></li>
 				</ul>
 			</li>
 			<li>
