@@ -57,39 +57,42 @@
 
 			<li>
 				<div class="iocn-link">
-					<a href="#" style="height: 50px;"> <i class='bx bx-task'></i> <span
-						class="link_name">작업관리</span>
+					<a href="#" style="height: 70px;"> <i class='bx bx-task'
+						style="margin-bottom: 5px;"></i> <span class="link_name"
+						style="font-size: 30px;">작업관리</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
 					<li><a class="link_name" href="#">작업관리</a></li>
-					<li><a href="#">게시판</a></li>
-					<li><a href="#">캘린더</a></li>
-					<li><a href="#">칸반보드</a></li>
+					<li><a href="#" style="font-size: 20px;">게시판</a></li>
+					<li><a href="#" style="font-size: 20px;">캘린더</a></li>
+					<li><a href="#" style="font-size: 20px;">칸반보드</a></li>
 				</ul>
 			</li>
 			<li>
 				<div class="iocn-link">
-					<a href="#" style="height: 50px;"> <i
-						class='bx bx-cloud-download'></i> <span class="link_name">파일관리</span>
+					<a href="#" style="height: 70px;"> <i
+						class='bx bx-cloud-download' style="margin-bottom: 5px;"></i> <span
+						class="link_name" style="font-size: 30px;">파일관리</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
 					<li><a class="link_name" href="#">파일관리</a></li>
-					<li><a href="#">파일브라우저</a></li>
+					<li><a href="#" style="font-size: 20px;">파일브라우저</a></li>
 				</ul>
 			</li>
 			<li>
 				<div class="iocn-link">
-					<a href="#" style="height: 50px;"> <i class='bx bx-message'></i>
-						<span class="link_name">메신저</span>
+					<a href="#" style="height: 70px;"> <i class='bx bx-message'
+						style="margin-bottom: 5px;"></i> <span class="link_name"
+						style="font-size: 30px;">메신저</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
 					<li><a class="link_name" href="#">메신저</a></li>
-					<li><a href="#">단체 톡방</a></li>
-					<li><a href="#">개인 톡방</a></li>
-					<li><a href="#">추가</a></li>
+					<li><a href="#" style="font-size: 20px;">단체 톡방</a></li>
+					<li><a href="#" style="font-size: 20px;">개인 톡방</a></li>
+					<li><a href="#" style="font-size: 20px;">추가</a></li>
 				</ul>
 			</li>
 
@@ -99,6 +102,59 @@
 		<div class="home-content">
 			<i class='bx bx-menu'
 				style="color: white; z-index: 10000; margin-top: 10px"></i>
+		</div>
+		<div style="margin-top: 20px; margin-left: 75px;">
+			<h1 style="font-size: 300%;">게시글</h1>
+			<table id="listTable">
+				<thead>
+					<tr id="tr">
+						<th style="width: 20px;">번호</th>
+						<th style="width: 100px;">제목</th>
+						<th style="width: 40px;">글쓴이</th>
+						<th style="width: 100px;">작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>히히</td>
+						<td>서현진</td>
+						<td>2021-10-26</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>히히</td>
+						<td>서현진</td>
+						<td>2021-10-26</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>히히</td>
+						<td>서현진</td>
+						<td>2021-10-26</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>히히</td>
+						<td>서현진</td>
+						<td>2021-10-26</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>히히</td>
+						<td>서현진</td>
+						<td>2021-10-26</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>히히</td>
+						<td>서현진</td>
+						<td>2021-10-26</td>
+					</tr>
+				</tbody>
+			</table>
+			<a href="${pageContext.request.contextPath}/work/workBoardWrite"><button
+					type="button" id="btnWrite">글쓰기</button></a>
 		</div>
 	</section>
 	<script>

@@ -30,4 +30,20 @@ public class WorkController {
     public String work(){
         return "work/work";    // views/member/login.jsp로 포워드
     }
+    
+    @RequestMapping("workBoard")
+    public String workBoard(){
+        return "work/workBoard"; 
+    }
+    
+    @RequestMapping("workBoardWrite")
+    public String workBoardWrite(){
+        return "work/workBoardWrite"; 
+    }
+    
+    @RequestMapping("workBoardDetail")
+    public String workBoardDetail(){
+        return "work/workBoardDetail"; 
+    }
+    
 }
