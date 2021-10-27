@@ -64,9 +64,9 @@
 				</div>
 				<ul class="sub-menu">
 					<li><a class="link_name" href="#">작업관리</a></li>
-					<li><a href="#" style="font-size:20px;">게시판</a></li>
-					<li><a href="#" style="font-size:20px;">캘린더</a></li>
-					<li><a href="#" style="font-size:20px;">칸반보드</a></li>
+					<li><a href="${pageContext.request.contextPath}/work/workBoard" style="font-size: 20px;">게시판</a></li>
+					<li><a href="${pageContext.request.contextPath}/work/workCalendar" style="font-size: 20px;">캘린더</a></li>
+					<li><a href="${pageContext.request.contextPath}/work/workKanban" style="font-size: 20px;">칸반보드</a></li>
 				</ul>
 			</li>
 			<li>

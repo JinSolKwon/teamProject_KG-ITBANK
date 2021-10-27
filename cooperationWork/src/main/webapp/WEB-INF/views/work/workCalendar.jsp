@@ -1,14 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/work.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/work.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/calendar/core/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/calendar/daygrid/main.css">
+<script src="${pageContext.request.contextPath}/resources/css/calendar/core/main.js"></script>
+<script src="${pageContext.request.contextPath}/resources/css/calendar/daygrid/main.js"></script>
+<script src="${pageContext.request.contextPath}/resources/css/calendar/core/locales/ko.js"></script>
+<script src="${pageContext.request.contextPath}/resources/css/calendar/schedule.js"></script>
 <!-- Boxiocns CDN Link -->
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -104,62 +108,47 @@
 			<i class='bx bx-menu'
 				style="color: white; z-index: 10000; margin-top: 10px"></i>
 		</div>
-		<div style="margin-top: 20px; margin-left: 75px;">
-			<h1 style="font-size: 300%;">게시글 작성</h1>
-			<table id="writeTable">
-				<tbody>
-					<tr>
-						<td id="firstCol"><label for="no">번호</label></td>
-						<td><label>1</label></td>
-					</tr>
-					<tr>
-						<td id="firstCol"><label for="writer">글쓴이</label></td>
-						<td><label>서현진</label></td>
-					</tr>
-					<tr>
-						<td id="firstCol"><label for="subject">제목</label></td>
-						<td><label>게시글 6</label></td>
-					</tr>
-					<tr>
-						<td id="firstCol"><label for="content">내용</label></td>
-						<td><label>히ggㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ히히힣</label></td>
-					</tr>
-					<tr>
-						<td id="firstCol"><label for="file">첨부파일</label></td>
-						<td>1.txt</td>
-					</tr>
-				</tbody>
-				<tr>
-					<td colspan="2" style="text-align: center;"><input
-						type="button"
-						style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="수정" onClick="window.location='<c:url value="workBoardUpdate"/>'">
-						<input type="button"
-						style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="삭제" onClick="window.location='<c:url value="workBoardDelete"/>'">
-						<input type="button"
-						style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="목록" onClick="window.location='<c:url value="workBoard"/>'">
-					</td>
-				</tr>
-			</table>
-
+			<div id="calendar" style="margin-top: 20px; margin-left: 100px; width:850px;font-size:100%;">
+				<button type="button" onclick="click_add();" style="float:right;width:80px;
+					height:40px;font-size:80%;border-radius:10px;">일정 추가</button>
 		</div>
 	</section>
 	<script>
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e)=>{
-   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-   arrowParent.classList.toggle("showMenu");
-    });
-  }
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".bx-menu");
-  console.log(sidebarBtn);
-  sidebarBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("close");
-  });
+	  let arrow = document.querySelectorAll(".arrow");
+	  for (var i = 0; i < arrow.length; i++) {
+	    arrow[i].addEventListener("click", (e)=>{
+	   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+	   arrowParent.classList.toggle("showMenu");
+	    });
+	  }
+	  let sidebar = document.querySelector(".sidebar");
+	  let sidebarBtn = document.querySelector(".bx-menu");
+	  console.log(sidebarBtn);
+	  sidebarBtn.addEventListener("click", ()=>{
+	    sidebar.classList.toggle("close");
+	  });
+	  
+  document.addEventListener('DOMContentLoaded', function() {
+	    var calendarEl = document.getElementById('calendar');
+
+	    var calendar = new FullCalendar.Calendar(calendarEl, {
+	      plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
+	      header: {
+	        left: 'prev,next today',
+	        center: 'title',
+	        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+	      },
+	      navLinks: true, // can click day/week names to navigate views
+	      businessHours: true, // display business hours
+	      editable: true,
+	      locale: "ko"
+	      
+	    });
+
+	    calendar.render();
+	  });
+
+
   </script>
 </body>
 </html>

@@ -65,9 +65,9 @@
 				</div>
 				<ul class="sub-menu">
 					<li><a class="link_name" href="#">작업관리</a></li>
-					<li><a href="#" style="font-size: 20px;">게시판</a></li>
-					<li><a href="#" style="font-size: 20px;">캘린더</a></li>
-					<li><a href="#" style="font-size: 20px;">칸반보드</a></li>
+					<li><a href="${pageContext.request.contextPath}/work/workBoard" style="font-size: 20px;">게시판</a></li>
+					<li><a href="${pageContext.request.contextPath}/work/workCalendar" style="font-size: 20px;">캘린더</a></li>
+					<li><a href="${pageContext.request.contextPath}/work/workKanban" style="font-size: 20px;">칸반보드</a></li>
 				</ul>
 			</li>
 			<li>
@@ -105,49 +105,55 @@
 				style="color: white; z-index: 10000; margin-top: 10px"></i>
 		</div>
 		<div style="margin-top: 20px; margin-left: 75px;">
-			<h1 style="font-size: 300%;">게시글 작성</h1>
-			<table id="writeTable">
-				<tbody>
+			<h1 style="font-size: 300%;">게시글 삭제</h1>
+			<form
+				action="${pageContext.request.contextPath}/work/workBoardDelete"
+				method="post">
+				<table id="writeTable">
+					<tbody>
+						<tr>
+							<td id="firstCol"><label for="no">번호</label></td>
+							<td><label>1</label></td>
+						</tr>
+						<tr>
+							<td id="firstCol"><label for="writer">글쓴이</label></td>
+							<td><label>서현진</label></td>
+						</tr>
+						<tr>
+							<td id="firstCol"><label for="subject">제목</label></td>
+							<td><label>게시글 6</label></td>
+						</tr>
+						<tr>
+							<td id="firstCol"><label for="content">내용</label></td>
+							<td><label>히ggㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ히히힣</label></td>
+						</tr>
+						<tr>
+							<td id="firstCol"><label for="file">첨부파일</label></td>
+							<td>1.txt</td>
+						</tr>
+					</tbody>
 					<tr>
-						<td id="firstCol"><label for="no">번호</label></td>
-						<td><label>1</label></td>
+						<td colspan="2" style="text-align: center;"><label
+							style="font-size: 150%">삭제하시려면 해당 계정의 패스워드를 입력 후 삭제를
+								클릭하세요.</label></td>
 					</tr>
 					<tr>
-						<td id="firstCol"><label for="writer">글쓴이</label></td>
-						<td><label>서현진</label></td>
+						<td colspan="2" style="text-align: center;">
+							<input	type="password" id="password" name="password"
+							style="font-size: 80%; height: 40px; width: 200px;">
+							<input type="hidden" name="num" value="${num}"> 
+						</td>
 					</tr>
 					<tr>
-						<td id="firstCol"><label for="subject">제목</label></td>
-						<td><label>게시글 6</label></td>
+						<td colspan="2" style="text-align: center;">
+							<input type="submit" style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
+							value="삭제"> 
+							<input type="button" style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
+							value="이전"	onClick="window.location='<c:url value="workBoardDetail"/>'">
+						</td>
 					</tr>
-					<tr>
-						<td id="firstCol"><label for="content">내용</label></td>
-						<td><label>히ggㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ히히힣</label></td>
-					</tr>
-					<tr>
-						<td id="firstCol"><label for="file">첨부파일</label></td>
-						<td>1.txt</td>
-					</tr>
-				</tbody>
-				<tr>
-					<td colspan="2" style="text-align: center;">
-						
-						<label style="font-size:150%">삭제하시려면 해당 계정의 패스워드를 입력 후 삭제를 클릭하세요.</label>
-						
-					</td>
-					<td colspan="2" style="text-align: center;"><input
-						type="button"
-						style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="수정" onClick="window.location='<c:url value="workBoard"/>'">
-						<input type="button"
-						style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="삭제" onClick="window.location='<c:url value="workBoard"/>'">
-						<input type="button"
-						style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="목록" onClick="window.location='<c:url value="workBoard"/>'">
-					</td>
-				</tr>
-			</table>
+				</table>
+			</form>
 
 		</div>
 	</section>

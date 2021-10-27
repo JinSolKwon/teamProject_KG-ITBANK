@@ -46,4 +46,23 @@ public class WorkController {
         return "work/workBoardDetail"; 
     }
     
+    @RequestMapping("workBoardUpdate")
+    public String workBoardUpdate() {
+    	return "work/workBoardUpdate";
+    }
+    
+    @RequestMapping("workBoardDelete")
+    public String workBoardDelete() {
+    	return "work/workBoardDelete";
+    }
+    
+    @RequestMapping("workCalendar")
+    public String workCalender() {
+    	return "work/workCalendar";
+    }
+    
+    @RequestMapping("calendarAddPopup")
+    public String calendarAddPopup() {
+    	return "work/calendarAddPopup";
+    }
 }

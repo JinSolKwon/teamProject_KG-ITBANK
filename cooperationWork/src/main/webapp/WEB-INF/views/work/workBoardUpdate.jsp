@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="ko">
@@ -58,9 +58,8 @@
 
 			<li>
 				<div class="iocn-link">
-					<a href="#" style="height: 70px;"> <i class='bx bx-task'
-						style="margin-bottom: 5px;"></i> <span class="link_name"
-						style="font-size: 30px;">작업관리</span>
+					<a href="#" style="height: 70px;"> <i class='bx bx-task' style="margin-bottom:5px;"></i> <span
+						class="link_name" style="font-size:30px;">작업관리</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
@@ -73,27 +72,26 @@
 			<li>
 				<div class="iocn-link">
 					<a href="#" style="height: 70px;"> <i
-						class='bx bx-cloud-download' style="margin-bottom: 5px;"></i> <span
-						class="link_name" style="font-size: 30px;">파일관리</span>
+						class='bx bx-cloud-download' style="margin-bottom:5px;"></i> 
+						<span class="link_name" style="font-size:30px;">파일관리</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
-					<li><a class="link_name" href="#">파일관리</a></li>
-					<li><a href="#" style="font-size: 20px;">파일브라우저</a></li>
+					<li><a class="link_name" href="#" >파일관리</a></li>
+					<li><a href="#" style="font-size:20px;">파일브라우저</a></li>
 				</ul>
 			</li>
 			<li>
 				<div class="iocn-link">
-					<a href="#" style="height: 70px;"> <i class='bx bx-message'
-						style="margin-bottom: 5px;"></i> <span class="link_name"
-						style="font-size: 30px;">메신저</span>
+					<a href="#" style="height: 70px;"> <i class='bx bx-message' style="margin-bottom:5px;"></i>
+						<span class="link_name" style="font-size:30px;">메신저</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
 					<li><a class="link_name" href="#">메신저</a></li>
-					<li><a href="#" style="font-size: 20px;">단체 톡방</a></li>
-					<li><a href="#" style="font-size: 20px;">개인 톡방</a></li>
-					<li><a href="#" style="font-size: 20px;">추가</a></li>
+					<li><a href="#" style="font-size:20px;">단체 톡방</a></li>
+					<li><a href="#" style="font-size:20px;">개인 톡방</a></li>
+					<li><a href="#" style="font-size:20px;">추가</a></li>
 				</ul>
 			</li>
 
@@ -105,45 +103,62 @@
 				style="color: white; z-index: 10000; margin-top: 10px"></i>
 		</div>
 		<div style="margin-top: 20px; margin-left: 75px;">
-			<h1 style="font-size: 300%;">게시글 작성</h1>
-			<table id="writeTable">
-				<tbody>
+			<h1 style="font-size: 300%;">게시글 수정</h1>
+			<form action="${pageContext.request.contextPath}/work/workBoard" method="post">
+				<table id="writeTable">
+					<tbody>
+						<tr>
+							<td id="firstCol">
+								<label for="no">번호</label>
+							</td>
+							<td>
+								<label>1</label>
+							</td>
+						</tr>
+						<tr>
+							<td id="firstCol">
+								<label for="writer">글쓴이</label>
+							</td>
+							<td>
+								<label>서현진</label>
+							</td>
+						</tr>
+						<tr>
+							<td id="firstCol">
+								<label for="subject">제목</label>
+							</td>
+							<td>
+								<input type="text" id="subject" name="subject" style="font-size:100%;height:40px;width:600px;"/>
+							</td>
+						</tr>
+						<tr>
+							<td id="firstCol">
+								<label for="content">내용</label>
+							</td>
+							<td>
+								<textarea name="content" rows="7" cols="60" style="font-size:100%;"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td id="firstCol">
+								<label for="file">첨부파일</label>
+							</td>
+							<td>
+								<input type="file" id="file" name="file"/>
+							</td>
+						</tr>
+					</tbody>
 					<tr>
-						<td id="firstCol"><label for="no">번호</label></td>
-						<td><label>1</label></td>
-					</tr>
-					<tr>
-						<td id="firstCol"><label for="writer">글쓴이</label></td>
-						<td><label>서현진</label></td>
-					</tr>
-					<tr>
-						<td id="firstCol"><label for="subject">제목</label></td>
-						<td><label>게시글 6</label></td>
-					</tr>
-					<tr>
-						<td id="firstCol"><label for="content">내용</label></td>
-						<td><label>히ggㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ히히힣</label></td>
-					</tr>
-					<tr>
-						<td id="firstCol"><label for="file">첨부파일</label></td>
-						<td>1.txt</td>
-					</tr>
-				</tbody>
-				<tr>
-					<td colspan="2" style="text-align: center;"><input
-						type="button"
-						style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="수정" onClick="window.location='<c:url value="workBoardUpdate"/>'">
-						<input type="button"
-						style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="삭제" onClick="window.location='<c:url value="workBoardDelete"/>'">
-						<input type="button"
-						style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="목록" onClick="window.location='<c:url value="workBoard"/>'">
-					</td>
-				</tr>
-			</table>
-
+			<td colspan="2" style="text-align:center;">
+				<input type="submit" value="수정" style="width:80px;height:40px;font-size:80%;border-radius:10px;">
+				<input type="reset" value="다시작성" style="width:80px;height:40px;font-size:80%;border-radius:10px;">
+				<input type="button" style="width:80px;height:40px;font-size:80%;border-radius:10px;" 
+					value="이전" onClick="window.location='<c:url value="workBoardDetail"/>'">
+			</td>
+		</tr>
+				</table>
+			</form>
+			
 		</div>
 	</section>
 	<script>
