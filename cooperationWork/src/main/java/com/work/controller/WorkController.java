@@ -65,4 +65,9 @@ public class WorkController {
     public String calendarAddPopup() {
     	return "work/calendarAddPopup";
     }
+    
+    @RequestMapping("workKanban")
+    public String workKanban() {
+    	return "work/workKanban";
+    }
 }

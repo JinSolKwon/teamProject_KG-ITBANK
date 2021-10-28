@@ -657,3 +657,38 @@ th, td{
 #writeTable th, #writeTable td{
 	border: none;
 }
+
+#todohead{
+	height:100px;
+	width:350px;
+	font-weight: normal;
+	border:1px solid;
+}
+
+#todobody{
+	max-height:500px; 
+	overflow-y:auto;
+	overflow-x:hidden; 
+	width:350px;
+	border:1px solid;
+}
+
+#todo {
+	width:300px;
+	/* border:1px solid; */ 
+	text-align:center;
+	font-size:150%;
+}
+#todo thead {
+	height:100px;
+}
+
+#todo tbody { 
+}
+#todo th, #todo td{
+	border: 1px solid #444444;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius:10px;
+	height: 100px;
+}
