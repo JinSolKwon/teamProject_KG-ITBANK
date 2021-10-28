@@ -25,14 +25,14 @@
 						src="${pageContext.request.contextPath}/resources/images/vert.png"
 						style="height: 40px; width: 40px; margin-top: 15px;"></a>
 					<ul style="width: 230px;">
-						<li style="margin-top: 15px;"><a
+						<li><a
 							href="${pageContext.request.contextPath}/space/space">워크스페이스
 								메인으로</a></li>
 						<li><a href="${pageContext.request.contextPath}/member/login">로그아웃</a></li>
 					</ul>
 			</ul>
 		</div>
-		<h3 style="color: white; float: right; margin-top: 20px;">서현진 님</h3>
+		<h3>서현진 님</h3>
 		<div class="navbar">
 			<div class="nav-links">
 				<ul class="links">
@@ -100,10 +100,10 @@
 			<i class='bx bx-menu'
 				style="color: white; z-index: 10000; margin-top: 10px"></i>
 		</div>
-		<div style="margin-top: 20px; margin-left: 75px;">
-			<h1 style="font-size: 300%;">칸반보드</h1>
+		<div style="margin-top: 20px; margin-left: 150px; float:left;">
+			<h1 style="font-size: 300%; width:300%;">칸반보드</h1>
 			<div id="todohead">
-				<table id="todo" style="width:350px;">
+				<table id="todo">
 					<thead>
 						<tr>
 							<th>To Do</th>
@@ -112,8 +112,78 @@
 				</table>
 			</div>	
 			<div id="todobody">
-				<table id="todo" style="margin-left:25px;">
-					<tbody>
+				<table id="todo">
+					<tbody style="background:#BEEFFF;">
+						<tr>
+							<td>1</td>
+					</tr>
+					<tr>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>1</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+		<div style="margin-top:72px; margin-left: 75px; float:left;">
+			<div id="todohead">
+				<table id="todo">
+					<thead>
+						<tr>
+							<th>In Progress</th>
+						</tr>
+					</thead>
+				</table>
+			</div>	
+			<div id="todobody">
+				<table id="todo">
+					<tbody style="background:#FAFAD2;">
+						<tr>
+							<td>1</td>
+					</tr>
+					<tr>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>1</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+		<div style="margin-top:72px; margin-left: 75px; float:left;">
+			<div id="todohead">
+				<table id="todo">
+					<thead>
+						<tr>
+							<th>Done</th>
+						</tr>
+					</thead>
+				</table>
+			</div>	
+			<div id="todobody">
+				<table id="todo">
+					<tbody style="background:#FFE3EE;">
 						<tr>
 							<td>1</td>
 					</tr>

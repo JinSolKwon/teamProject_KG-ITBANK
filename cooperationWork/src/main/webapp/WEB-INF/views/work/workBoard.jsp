@@ -24,14 +24,14 @@
 						src="${pageContext.request.contextPath}/resources/images/vert.png"
 						style="height: 40px; width: 40px; margin-top: 15px;"></a>
 					<ul style="width: 230px;">
-						<li style="margin-top: 15px;"><a
+						<li><a
 							href="${pageContext.request.contextPath}/space/space">워크스페이스
 								메인으로</a></li>
 						<li><a href="${pageContext.request.contextPath}/member/login">로그아웃</a></li>
 					</ul>
 			</ul>
 		</div>
-		<h3 style="color: white; float: right; margin-top: 20px;">서현진 님</h3>
+		<h3>서현진 님</h3>
 		<div class="navbar">
 			<div class="nav-links">
 				<ul class="links">
