@@ -1,4 +1,4 @@
-package com.work.dto;
+package com.work.dto.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
