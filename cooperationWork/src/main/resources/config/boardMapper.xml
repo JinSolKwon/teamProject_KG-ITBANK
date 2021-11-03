@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardDao">
+
+	<select id="countArticle" parameterType="int" resultType="int">
+		SELECT count(*) FROM BOARD_DETAIL WHERE SPACE_NO=#{spaceNo}
+	</select>
+
+	<select id="boardList" parameterType="hashmap" resultType="boardVo">
+		select
+		A.ID,
+		A.NAME,
+		A.PASSWORD,
+		B.SPACE_NAME AS spaceName,
+		B.MANAGER_NO AS managerNo,
+		C.MEMBER_NO AS memberNo,
+		D.BOARD_DETAIL_NO AS boardDetailNo,
+		D.SPACE_NO AS spaceNo,
+		D.SPACE_MEMBER_NO AS spaceMemberNo,
+		D.SUBJECT,
+		D.CONTENT,
+		D.FILENAME,
+		D.CREATE_DATE AS createDate
+		FROM
+		MEMBER A,
+		SPACE B,
+		SPACE_MEMBER C,
+		(select * from 
+		(select rownum RNUM, BOARD_DETAIL_NO, SPACE_NO, SPACE_MEMBER_NO, SUBJECT, CONTENT, FILENAME,CREATE_DATE
+		 from (select * from BOARD_DETAIL order by CREATE_DATE desc))
+		<![CDATA[where RNUM >= #{start} and RNUM <= #{end}]]>) D
+		WHERE
+		D.SPACE_MEMBER_NO = #{spaceMemberNo}
+		AND D.SPACE_NO = #{spaceNo}
+		AND C.SPACE_MEMBER_NO = D.SPACE_MEMBER_NO
+		AND A.MEMBER_NO = C.MEMBER_NO
+		AND B.SPACE_NO = D.SPACE_NO
+		AND C.SPACE_NO = B.SPACE_NO
+	</select>
+	
+	<select id="selectArticle" parameterType="int" resultType="boardVo">
+		select 
+		A.BOARD_DETAIL_NO boardDetailNo,
+		A.SPACE_NO AS spaceNo,
+		A.SPACE_MEMBER_NO AS spaceMemberNo,
+		A.SUBJECT,
+		A.CONTENT,
+		A.FILENAME,
+		A.CREATE_DATE AS createDate,
+		B.NAME
+		from 
+		(select * from BOARD_DETAIL where BOARD_DETAIL_NO=#{boardDetailNo}) A,
+		(select NAME from MEMBER where MEMBER_NO=
+			(select MEMBER_NO from SPACE_MEMBER where SPACE_MEMBER_NO=
+				(select SPACE_MEMBER_NO from BOARD_DETAIL where BOARD_DETAIL_NO=#{boardDetailNo}))) B 
+	</select>
+	
+	<insert id="writeBoard" parameterType="boardVo">
+		insert into BOARD_DETAIL(BOARD_DETAIL_NO,SPACE_NO,SPACE_MEMBER_NO,SUBJECT,CONTENT,FILENAME, CREATE_DATE)
+		values (BOARD_DETAIL_NO_SEQ.nextval,#{spaceNo},#{spaceMemberNo},#{subject},#{content},#{filename},SYSDATE);
+	</insert>
+
+	<update id="articleUpdate" parameterType="boardVo">
+		update BOARD_DETAIL set SUBJECT=#{subject},CONTENT=#{content},FILENAME=#{filename} 
+		where BOARD_DETAIL_NO=#{boardDetailNo} and AND SPACE_MEMBER_NO=#{spaceMemberNo}
+	</update>
+	
+	<delete id="deleteArticle" parameterType="boardVo"> 
+		delete from BOARD_DETAIL where BOARD_DETAIL_NO=#{boardDetailNo} 
+		and PASSWORD=#{password}
+		and SPACE_MEMBER_NO=#{spaceMemberNo} 
+	</delete>
+
+</mapper>

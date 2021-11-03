@@ -642,11 +642,9 @@ nav .navbar .links li .sub-menu li{
 }
 
 #btnWrite{
-	margin-left:1200px;
-	margin-top:15px;
 	width:80px;
 	height:40px;
-	font-size:150%;
+	font-size:15px;
 	border-radius:10px;
 }
 

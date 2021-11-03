@@ -19,8 +19,8 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		<property name="user" value="scott"/>
-		<property name="password" value="tiger"/>  
+		<property name="user" value="team"/>
+		<property name="password" value="1234"/>  
 		<property name="maxPoolSize" value="100"/> 
 		<property name="maxIdleTime" value="600"/>   
 		<property name="idleConnectionTestPeriod" value="300"/>
@@ -35,11 +35,16 @@
 		<property name="configLocation" value="classpath:config/mybatisConfig.xml"/>
 		<property name="mapperLocations">  
 			<list>
+				<value>classpath:config/boardMapper.xml</value>
 				<value>classpath:config/memberMapper.xml</value>
 				<value>classpath:config/spaceMapper.xml</value>
 				<value>classpath:config/workMapper.xml</value>
 			</list> 
 		</property>
+	</bean>
+	
+	<bean id="boardDao" class="com.work.dao.BoardDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate"/> 
 	</bean>
 	
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">

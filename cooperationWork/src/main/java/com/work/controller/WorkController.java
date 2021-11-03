@@ -28,7 +28,7 @@ public class WorkController {
     // 01. 로그인 화면 
     @RequestMapping("work")
     public String work(){
-        return "work/work";    // views/member/login.jsp로 포워드
+        return "work/work"; 
     }
     
     @RequestMapping("workBoard")
