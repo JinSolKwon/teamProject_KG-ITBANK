@@ -89,9 +89,12 @@
 	
 	
 	<update id="articleUpdate" parameterType="boardVo">
-		update BOARD_DETAIL set SUBJECT=#{subject},CONTENT=#{content},FILENAME=#{filename} 
-		where BOARD_DETAIL_NO=#{boardDetailNo} and AND SPACE_MEMBER_NO=#{spaceMemberNo}
+		update BOARD_DETAIL set SUBJECT=#{subject},CONTENT=#{content},FILENAME=#{fileName} 
+		where BOARD_DETAIL_NO=#{boardDetailNo}
 	</update>
 	
+	<update id="deleteFile" parameterType="int">
+		update BOARD_DETAIL set FILENAME=#{null} where BOARD_DETAIL_NO=#{boardDetailNo} 
+	</update>
 
 </mapper>

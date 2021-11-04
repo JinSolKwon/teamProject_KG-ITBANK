@@ -29,4 +29,10 @@ public interface BoardDao {
 	
 	//작성 유저 번호 가져오기 메서드
 	public abstract int selectMember(int boardDetailNo);
+	
+	// 파일 수정 시 기존파일 삭제 메서드
+	public abstract int deleteFile(HashMap<String, Integer> map);
+	
+	// 게시물 수정 메서드
+	public abstract int update(BoardVo vo);
 }

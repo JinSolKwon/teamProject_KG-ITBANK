@@ -104,15 +104,15 @@
 		</div>
 		<div style="margin-top: 20px; margin-left: 75px;">
 			<h1 style="font-size: 300%;">게시글 수정</h1>
-			<form action="${pageContext.request.contextPath}/work/workBoard" method="post">
+			<form action="${pageContext.request.contextPath}/work/boardUpdate/${num}" method="POST" enctype="multipart/form-data">
 				<table id="writeTable">
 					<tbody>
 						<tr>
 							<td id="firstCol">
-								<label for="no">번호</label>
+								<label for="subject">제목</label>
 							</td>
 							<td>
-								<label>1</label>
+								<input type="text" id="subject" name="subject" value="${article.subject}" style="font-size:100%;height:40px;width:600px;"/>
 							</td>
 						</tr>
 						<tr>
@@ -120,15 +120,7 @@
 								<label for="writer">글쓴이</label>
 							</td>
 							<td>
-								<label>서현진</label>
-							</td>
-						</tr>
-						<tr>
-							<td id="firstCol">
-								<label for="subject">제목</label>
-							</td>
-							<td>
-								<input type="text" id="subject" name="subject" style="font-size:100%;height:40px;width:600px;"/>
+								<label>${name}</label>
 							</td>
 						</tr>
 						<tr>
@@ -136,7 +128,7 @@
 								<label for="content">내용</label>
 							</td>
 							<td>
-								<textarea name="content" rows="7" cols="60" style="font-size:100%;"></textarea>
+								<textarea id="content" name="content" rows="7" cols="60" style="font-size:100%;">${article.content}</textarea>
 							</td>
 						</tr>
 						<tr>
@@ -144,7 +136,14 @@
 								<label for="file">첨부파일</label>
 							</td>
 							<td>
-								<input type="file" id="file" name="file"/>
+								<c:if test="${article.fileName != null}">
+									${article.fileName}
+									<input type="button" value="파일삭제" style="width:60px;height:30px;font-size:70%;" onClick="window.location='<c:url value="/work/deleteFile/${num}"/>'">
+								</c:if>
+								<c:if test="${article.fileName == null}">
+									<input type="file" id="file" name="file"/>
+								
+								</c:if>
 							</td>
 						</tr>
 					</tbody>
@@ -153,7 +152,7 @@
 				<input type="submit" value="수정" style="width:80px;height:40px;font-size:80%;border-radius:10px;">
 				<input type="reset" value="다시작성" style="width:80px;height:40px;font-size:80%;border-radius:10px;">
 				<input type="button" style="width:80px;height:40px;font-size:80%;border-radius:10px;" 
-					value="이전" onClick="window.location='<c:url value="workBoardDetail"/>'">
+					value="이전" onClick="window.location='<c:url value="/work/boardDetail/${num}"/>'">
 			</td>
 		</tr>
 				</table>

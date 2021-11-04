@@ -60,4 +60,14 @@ public class BoardDaoImpl implements BoardDao {
 	public int selectMember(int boardDetailNo) {
 		return sqlSessionTemplate.selectOne("selectMember", boardDetailNo);
 	}
+	
+	@Override
+	public int deleteFile(HashMap<String, Integer> map) {
+		return sqlSessionTemplate.update("deleteFile", map);
+	}
+	
+	@Override
+	public int update(BoardVo vo) {
+		return sqlSessionTemplate.update("articleUpdate", vo);
+	}
 }

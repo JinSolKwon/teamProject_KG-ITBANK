@@ -21,4 +21,8 @@ public interface BoardService {
 	public abstract int delete(int boardDetailNo);
 	
 	public abstract int selectMember(int boardDetailNo);
+	
+	public abstract int deleteFile(int boardDetailNo);
+	
+	public abstract int update(BoardVo vo);
 }

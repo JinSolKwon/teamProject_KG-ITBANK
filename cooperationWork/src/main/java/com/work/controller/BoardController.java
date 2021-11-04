@@ -21,10 +21,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.work.dto.BoardVo;
@@ -66,8 +68,6 @@ public class BoardController {
 	    			articleList = Collections.emptyList();
 	    		}
 	    		number = count - (currentPage - 1) * pageSize;	//글 목록에 표시할 글 번호
-	    		
-	    		System.out.println(articleList);
 	    		
 	    		model.addAttribute("currentPage",new Integer(currentPage));
 	    		model.addAttribute("startRow",new Integer(startRow));
@@ -195,7 +195,7 @@ public class BoardController {
 				return "redirect:work/boardWrite"; 
 			}
 			boardService.write(boardVo);
-			return "redirect:work/boardMain?pageNum=1";
+			return "redirect:/work/boardMain?pageNum=1";
 		}
 	    
 	    @GetMapping(value="boardDelete/{num}")
@@ -203,7 +203,6 @@ public class BoardController {
 	    	BoardVo vo=boardService.read(num);
 	    	
 	    	String name=boardService.name(boardService.read(num).getSpaceMemberNo());
-	    	System.out.println(name);
 	    	
 			model.addAttribute("article", vo);
 			model.addAttribute("name", name);
@@ -242,7 +241,75 @@ public class BoardController {
 			
 				boardService.delete(num);
 			
-				return "work/boardMain?pageNum="+pageNum; 		
+				return "redirect:/work/boardMain?pageNum="+pageNum; 		
 		}    
 	}
+	
+		@GetMapping(value="boardUpdate/{num}")
+		public String edit(@PathVariable int num, Model model, HttpSession session) {
+			int pageNum = (int)session.getAttribute("pageNum");
+			BoardVo vo = new BoardVo();
+			vo = boardService.read(num);
+			String name=boardService.name(boardService.read(num).getSpaceMemberNo());
+			
+			model.addAttribute("num", num);
+			model.addAttribute("article", vo);
+			model.addAttribute("pageNum",pageNum);
+			model.addAttribute("name", name);
+			return "work/boardUpdate";
+		}		
+			
+		@PostMapping(value="boardUpdate/{num}")
+		public String edit(@RequestParam("file")MultipartFile file, @Valid BoardVo vo, BindingResult result, String pwd, 
+				SessionStatus sessionStatus, Model model, HttpSession session, @PathVariable int num) throws IllegalStateException, IOException {
+			
+			System.out.println(vo);
+			
+			String fileName=file.getOriginalFilename();
+			System.out.println(fileName);
+			vo.setBoardDetailNo(num);
+			
+			if(!file.getOriginalFilename().isEmpty()) {
+				file.transferTo(new File(FILE_PATH, fileName));
+				vo.setFileName(fileName); 
+			} else {
+				vo.setFileName("");
+			}
+			if(result.hasErrors()) {
+				return "/work/boardUpdate";
+			} else {			 
+				boardService.update(vo);
+				sessionStatus.setComplete();   
+				return "redirect:/work/boardDetail/"+ num; 
+			}
+		
+		}
+		
+		@RequestMapping(value="deleteFile/{num}")
+		public String deleteFile(Model model,@PathVariable int num) {
+			String filename = boardService.read(num).getFileName();
+			
+			if(filename == null) {
+				filename= "";
+			}
+		
+			if (!filename.equals("")) {
+				File dir = new File(FILE_PATH);
+				File[] files = dir.listFiles();
+				for (File f : files) {
+					if (f.getName().equals(filename)) {
+						f.delete();
+					}
+				}
+			}
+			
+			int result = boardService.deleteFile(num);
+			
+			if (result != 0 ) {
+				return "redirect:/work/boardUpdate/{num}";
+			} else {
+				model.addAttribute("msg", "삭제되지 않았습니다.");
+				return "redirect:/work/boardUpdate/{num}";
+			}
+		}
 }

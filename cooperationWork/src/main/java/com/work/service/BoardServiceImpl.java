@@ -60,4 +60,17 @@ public class BoardServiceImpl implements BoardService{
 	public int selectMember(int boardDetailNo) {
 		return boardDao.selectMember(boardDetailNo);
 	}
+	
+	@Override
+	public int deleteFile(int boardDetailNo) {
+		HashMap<String,Integer> map = new HashMap<String, Integer>();
+		map.put("boardDetailNo", boardDetailNo);
+		map.put("null", null);
+		return boardDao.deleteFile(map);
+	}
+	
+	@Override
+	public int update(BoardVo vo) {
+		return boardDao.update(vo);
+	}
 }
