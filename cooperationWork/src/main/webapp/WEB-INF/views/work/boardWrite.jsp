@@ -104,23 +104,15 @@
 		</div>
 		<div style="margin-top: 20px; margin-left: 75px;">
 			<h1 style="font-size: 300%;">게시글 작성</h1>
-			<form action="${pageContext.request.contextPath}/work/workBoard" method="post">
+			<form action="<c:url value="/work/boardWrite"/>" method="POST" enctype="multipart/form-data">
 				<table id="writeTable">
 					<tbody>
-						<tr>
-							<td id="firstCol">
-								<label for="no">번호</label>
-							</td>
-							<td>
-								<label>1</label>
-							</td>
-						</tr>
 						<tr>
 							<td id="firstCol">
 								<label for="writer">글쓴이</label>
 							</td>
 							<td>
-								<label>서현진</label>
+								<label>${name}</label>
 							</td>
 						</tr>
 						<tr>
@@ -153,7 +145,7 @@
 				<input type="submit" value="글쓰기" style="width:80px;height:40px;font-size:80%;border-radius:10px;">
 				<input type="reset" value="다시작성" style="width:80px;height:40px;font-size:80%;border-radius:10px;">
 				<input type="button" style="width:80px;height:40px;font-size:80%;border-radius:10px;" 
-					value="목록" onClick="window.location='<c:url value="workBoard"/>'">
+					value="목록" onClick="window.location='<c:url value="boardMain?pageNum=${pageNum}"/>'">
 			</td>
 		</tr>
 				</table>

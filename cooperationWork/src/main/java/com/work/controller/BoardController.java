@@ -1,19 +1,31 @@
 package com.work.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.work.dto.BoardVo;
 import com.work.service.BoardService;
@@ -23,6 +35,8 @@ import com.work.service.BoardService;
 public class BoardController {
 	    // 로깅을 위한 변수
 	    private static final Logger logger = LoggerFactory.getLogger(WorkController.class);
+	    
+	    private static final String FILE_PATH ="c:\\javastudy\\fileupload";
 	    
 	    @Inject
 	    BoardService boardService;
@@ -70,15 +84,165 @@ public class BoardController {
 	    
 	    @RequestMapping("boardDetail/{boardDetailNo}")
 		public String read(Model model, @PathVariable int boardDetailNo, HttpSession session) {
-			model.addAttribute("article", boardService.read(boardDetailNo));
+	    	int writeMemberNo=boardService.selectMember(boardDetailNo);
+	    	
+			int spaceNo = 1;  //(int)session.getAttribute("spaceNo");
+	    	int spaceMemberNo = 2;  //(int)session.getAttribute("spaceMemberNo");
+	    	boolean writer = false; 
+	    	
+	    	if (writeMemberNo == spaceMemberNo) {
+	    		writer = true;
+	    	}
+	    	model.addAttribute("article", boardService.read(boardDetailNo));
 			model.addAttribute("pageNum", session.getAttribute("pageNum"));
+			model.addAttribute("writer", writer);
 			
 			return "work/boardDetail";
 		}
 	    
+		@RequestMapping(value="download/{boardDetailNo}")
+		public void download(@PathVariable int boardDetailNo ,HttpServletResponse resp, HttpServletRequest req) {
+			BoardVo vo = boardService.read(boardDetailNo);
+			String filename = vo.getFileName();
+			
+			File downFile = new File(FILE_PATH + "\\"+ filename);
+			
+			if (downFile.exists() && downFile.isFile()) {
+				try {
+					filename = URLEncoder.encode(filename, "utf-8").replaceAll("\\+","%20");
+					long filesize = downFile.length();
+					
+					resp.setContentType("application/octet-stream; charset=utf-8");
+					resp.setContentLength((int) filesize);
+					String strClient = req.getHeader("user-agent");
+					
+					if (strClient.indexOf("MSIE 5.5") != -1) {
+						resp.setHeader("Content-Disposition", "filename="
+	                            + filename + ";");
+	                } else {
+	                	resp.setHeader("Content-Disposition",
+	                            "attachment; filename=" + filename + ";");
+	                }
+					resp.setHeader("Content-Length", String.valueOf(filesize));
+					resp.setHeader("Content-Transfer-Encoding", "binary;");
+					resp.setHeader("Pragma", "no-cache");
+					resp.setHeader("Cache-Control", "private");
+	 
+	                byte b[] = new byte[1024];
+	 
+	                BufferedInputStream in = new BufferedInputStream(
+	                        new FileInputStream(downFile));
+	 
+	                BufferedOutputStream out = new BufferedOutputStream(
+	                		resp.getOutputStream());
+	 
+	                int read = 0;
+	 
+	                while ((read = in.read(b)) != -1) {
+	                    out.write(b, 0, read);
+	                }
+	                out.flush();
+	                out.close();
+	                in.close();
+					
+				} catch (Exception e) {
+					System.out.println("Download Exception : " + e.getMessage());
+				}
+			} else {
+				System.out.println("Download Error : downFile Error [" + downFile + "]");
+			}
+			 
+		}
+	    
 	    @GetMapping(value="boardWrite")
 	    public String write(Model model,HttpSession session) {
-	    
+	    	int pageNum=(int)session.getAttribute("pageNum");
+	    	int spaceNo = 1;  //(int)session.getAttribute("spaceNo");
+	    	int spaceMemberNo = 2;  //(int)session.getAttribute("spaceMemberNo");
+	    	BoardVo article = new BoardVo();
+	    	
+	    	article.setSpaceNo(spaceNo);
+	    	article.setSpaceMemberNo(spaceMemberNo);
+	    	
+	    	model.addAttribute("name", boardService.name(spaceMemberNo));
+	    	model.addAttribute("article", article);
+	    	model.addAttribute("pageNum",pageNum);
+	    	
 	    	return "work/boardWrite";
 	    }
+	    
+	    @PostMapping(value="boardWrite")
+		public String write(@RequestParam("file")MultipartFile file, @Valid BoardVo boardVo, BindingResult bindingResult,
+			 HttpSession session) throws IllegalStateException, IOException{
+	    	int spaceNo = 1;  //(int)session.getAttribute("spaceNo");
+	    	int spaceMemberNo = 2;  //(int)session.getAttribute("spaceMemberNo");
+	    	
+	    	int pageNum = (int)session.getAttribute("pageNum");
+	    	
+	    	String fileName = file.getOriginalFilename();
+			
+	    	boardVo.setSpaceNo(spaceNo);
+	    	boardVo.setSpaceMemberNo(spaceMemberNo);
+
+			if(!file.getOriginalFilename().isEmpty()) {
+				file.transferTo(new File(FILE_PATH, fileName));
+				boardVo.setFileName(fileName); 
+			} else {
+				boardVo.setFileName("");
+			}
+			
+			if(bindingResult.hasErrors()) {
+				return "redirect:work/boardWrite"; 
+			}
+			boardService.write(boardVo);
+			return "redirect:work/boardMain?pageNum=1";
+		}
+	    
+	    @GetMapping(value="boardDelete/{num}")
+		public String delete(@PathVariable int num, Model model) {
+	    	BoardVo vo=boardService.read(num);
+	    	
+	    	String name=boardService.name(boardService.read(num).getSpaceMemberNo());
+	    	System.out.println(name);
+	    	
+			model.addAttribute("article", vo);
+			model.addAttribute("name", name);
+			return "work/boardDelete";
+		}
+		
+		@PostMapping(value="boardDelete/{num}")
+		public String delete(int num, String pwd, Model model, HttpSession req
+				) {
+			int pageNum = (int)req.getAttribute("pageNum");
+			String pass=boardService.pass(num);
+			System.out.println(pass);
+			System.out.println(pwd);
+			if (!pass.equals(pwd)) {
+				model.addAttribute("msg", "비밀번호가 일치하지 않습니다.");
+				return "redirect:/work/boardDelete/"+num;
+			} else {
+				BoardVo vo = new BoardVo();
+				vo.setBoardDetailNo(num);
+			 
+				String filename = boardService.read(num).getFileName();
+			
+				if(filename == null) {
+					filename= "";
+				}
+			
+				if (!filename.equals("")) {
+					File dir = new File(FILE_PATH);
+					File[] files = dir.listFiles();
+					for (File f : files) {
+						if (f.getName().equals(filename)) {
+							f.delete();
+						}
+					}
+				}
+			
+				boardService.delete(num);
+			
+				return "work/boardMain?pageNum="+pageNum; 		
+		}    
+	}
 }

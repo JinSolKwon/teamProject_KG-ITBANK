@@ -55,6 +55,7 @@
 			<span class="logo_name" style="font-size: 30px; margin-bottom: 15px;">TASKWITH</span>
 		</div>
 		<ul class="nav-links">
+
 			<li>
 				<div class="iocn-link">
 					<a href="#" style="height: 70px;"> <i class='bx bx-task'
@@ -104,46 +105,49 @@
 				style="color: white; z-index: 10000; margin-top: 10px"></i>
 		</div>
 		<div style="margin-top: 20px; margin-left: 75px;">
-			<h1 style="font-size: 300%;">게시글 상세보기</h1>
-			<table id="writeTable">
-				<tbody>
+			<h1 style="font-size: 300%;">게시글 삭제</h1>
+			<form action="${pageContext.request.contextPath}/work/boardDelete/${num}" method="POST">
+				<table id="writeTable">
+					<tbody>
+						<tr>
+							<td id="firstCol"><label for="subject">제목</label></td>
+							<td><label>${article.subject}</label></td>
+						</tr>
+						<tr>
+							<td id="firstCol"><label for="writer">글쓴이</label></td>
+							<td><label>${name}</label></td>
+						</tr>
+						<tr>
+							<td id="firstCol"><label for="content">내용</label></td>
+							<td><label>${article.content}</label></td>
+						</tr>
+						<tr>
+							<td id="firstCol"><label for="file">첨부파일</label></td>
+							<td>${article.fileName}</td>
+						</tr>
+					</tbody>
 					<tr>
-						<td id="firstCol"><label for="subject">제목</label></td>
-						<td><label>${article.subject}</label></td>
+						<td colspan="2" style="text-align: center;"><label
+							style="font-size: 150%">삭제하시려면 해당 계정의 패스워드를 입력 후 삭제를
+								클릭하세요.</label></td>
 					</tr>
 					<tr>
-						<td id="firstCol"><label for="writer">글쓴이</label></td>
-						<td><label>${article.name}</label></td>
+						<td colspan="2" style="text-align: center;">
+							<input	type="password" id="pwd" name="pwd"
+							style="font-size: 80%; height: 40px; width: 200px;">
+							<input type="hidden" name="num" value="${num}"> 
+						</td>
 					</tr>
 					<tr>
-						<td id="firstCol"><label for="content">내용</label></td>
-						<td><label>${article.content}</label></td>
+						<td colspan="2" style="text-align: center;">
+							<input type="submit" style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
+							value="삭제"> 
+							<input type="button" style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
+							value="이전"	onClick="window.location='<c:url value="/work/boardDetail/${num}"/>'">
+						</td>
 					</tr>
-					<tr>
-						<td id="firstCol"><label for="file">첨부파일</label></td>
-						<td colspan="3" class="file"><a href="<c:url value="/work/download/${article.boardDetailNo}"/>">${article.fileName}</a></td>
-					</tr>
-				</tbody>
-				<tr>
-					<td colspan="2" style="text-align: center;">
-						<c:if test="${ writer==true }">
-						<input type="button" style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="수정" onClick="window.location='<c:url value="/work/boardUpdate/${article.boardDetailNo}"/>'">
-						<input type="button"
-						style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="삭제" onClick="window.location='<c:url value="/work/boardDelete/${article.boardDetailNo}"/>'">
-						<input type="button"
-						style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="목록" onClick="window.location='<c:url value="/work/boardMain?pageNum=${pageNum}"/>'">
-						</c:if>
-						<c:if test="${ writer!=true }">
-						<input type="button"
-						style="width: 80px; height: 40px; font-size: 80%; border-radius: 10px;"
-						value="목록" onClick="window.location='<c:url value="/work/boardMain?pageNum=${pageNum}"/>'">
-						</c:if>
-					</td>
-				</tr>
-			</table>
+				</table>
+			</form>
 
 		</div>
 	</section>

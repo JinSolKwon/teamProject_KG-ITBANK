@@ -57,20 +57,41 @@
 				(select SPACE_MEMBER_NO from BOARD_DETAIL where BOARD_DETAIL_NO=#{boardDetailNo}))) B 
 	</select>
 	
+	<select id="writeName" parameterType="int" resultType="string">
+		select NAME
+		from
+		(select NAME from MEMBER where MEMBER_NO=
+			(select MEMBER_NO from SPACE_MEMBER where SPACE_MEMBER_NO=#{spaceMemberNo}))
+	</select>
+	
 	<insert id="writeBoard" parameterType="boardVo">
-		insert into BOARD_DETAIL(BOARD_DETAIL_NO,SPACE_NO,SPACE_MEMBER_NO,SUBJECT,CONTENT,FILENAME, CREATE_DATE)
-		values (BOARD_DETAIL_NO_SEQ.nextval,#{spaceNo},#{spaceMemberNo},#{subject},#{content},#{filename},SYSDATE);
+		insert into BOARD_DETAIL(BOARD_DETAIL_NO,SPACE_NO,SPACE_MEMBER_NO,SUBJECT,CONTENT,FILENAME,CREATE_DATE)
+		values (BOARD_DETAIL_NO_SEQ.nextval,#{spaceNo},#{spaceMemberNo},#{subject},#{content},#{fileName},SYSDATE)
 	</insert>
-
+	
+	<select id="pass" parameterType="int" resultType="String">
+		select PASSWORD
+		from
+		(select PASSWORD from MEMBER where MEMBER_NO=
+			(select MEMBER_NO from SPACE_MEMBER where SPACE_MEMBER_NO=
+				(select SPACE_MEMBER_NO from BOARD_DETAIL where BOARD_DETAIL_NO=#{boardDetailNo})))
+	</select>
+	
+	<delete id="deleteArticle" parameterType="int"> 
+		delete from 
+		BOARD_DETAIL
+		where BOARD_DETAIL_NO=#{boardDetailNo} 
+	</delete>
+	
+	<select id="selectMember" parameterType="int" resultType="int">
+		select SPACE_MEMBER_NO AS spaceMemberNo from BOARD_DETAIL where BOARD_DETAIL_NO=#{boardDetailNo}
+	</select>
+	
+	
 	<update id="articleUpdate" parameterType="boardVo">
 		update BOARD_DETAIL set SUBJECT=#{subject},CONTENT=#{content},FILENAME=#{filename} 
 		where BOARD_DETAIL_NO=#{boardDetailNo} and AND SPACE_MEMBER_NO=#{spaceMemberNo}
 	</update>
 	
-	<delete id="deleteArticle" parameterType="boardVo"> 
-		delete from BOARD_DETAIL where BOARD_DETAIL_NO=#{boardDetailNo} 
-		and PASSWORD=#{password}
-		and SPACE_MEMBER_NO=#{spaceMemberNo} 
-	</delete>
 
 </mapper>

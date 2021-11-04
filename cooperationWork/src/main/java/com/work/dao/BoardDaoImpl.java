@@ -23,10 +23,7 @@ public class BoardDaoImpl implements BoardDao {
 	
 	@Override
 	public int boardCount(int spaceNo) {
-		System.out.println(spaceNo);
-		int num = sqlSessionTemplate.selectOne("countArticle", spaceNo);
-		System.out.println(num);
-		return num;
+		return sqlSessionTemplate.selectOne("countArticle", spaceNo);
 	}
 	
 	@Override
@@ -40,8 +37,27 @@ public class BoardDaoImpl implements BoardDao {
 	}
 	
 	@Override
+	public String name(int spaceMemberNo) {
+		return sqlSessionTemplate.selectOne("writeName", spaceMemberNo);
+	}
+	
+	@Override
 	public BoardVo getArticle(int boardDetailNo) {
 		return sqlSessionTemplate.selectOne("selectArticle", boardDetailNo);
 	}
 	
+	@Override
+	public String getPass(int boardDetailNo) {
+		return sqlSessionTemplate.selectOne("pass", boardDetailNo);
+	}
+	
+	@Override
+	public int deleteBoard(int boardDetailNo) {
+		return sqlSessionTemplate.delete("deleteArticle", boardDetailNo);
+	}
+	
+	@Override
+	public int selectMember(int boardDetailNo) {
+		return sqlSessionTemplate.selectOne("selectMember", boardDetailNo);
+	}
 }

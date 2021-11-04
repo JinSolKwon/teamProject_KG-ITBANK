@@ -13,4 +13,12 @@ public interface BoardService {
 	public abstract BoardVo read(int boardDetailNo);
 	
 	public abstract void write(BoardVo vo);
+	
+	public abstract String name(int spaceMemberNo);
+	
+	public abstract String pass(int boardDetailNo);
+	
+	public abstract int delete(int boardDetailNo);
+	
+	public abstract int selectMember(int boardDetailNo);
 }

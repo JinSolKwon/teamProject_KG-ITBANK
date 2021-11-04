@@ -40,4 +40,24 @@ public class BoardServiceImpl implements BoardService{
 	public void write(BoardVo vo) {
 		boardDao.writeBoard(vo);
 	}
+	
+	@Override
+	public String name(int spaceMemberNo) {
+		return boardDao.name(spaceMemberNo);
+	}
+	
+	@Override
+	public String pass(int boardDetailNo) {
+		return boardDao.getPass(boardDetailNo);
+	}
+	
+	@Override
+	public int delete(int boardDetailNo) {
+		return boardDao.deleteBoard(boardDetailNo);
+	}
+	
+	@Override
+	public int selectMember(int boardDetailNo) {
+		return boardDao.selectMember(boardDetailNo);
+	}
 }
