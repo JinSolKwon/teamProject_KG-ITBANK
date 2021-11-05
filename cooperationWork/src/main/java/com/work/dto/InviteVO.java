@@ -1,0 +1,49 @@
+package com.work.dto;
+
+import java.util.List;
+
+public class InviteVO {
+	private int inviteNo;
+	private int spaceNo;
+	private List<String> id;
+	
+	public InviteVO() {}
+	
+	public InviteVO(int inviteNo, int spaceNo, List<String> id) {
+		super();
+		this.inviteNo = inviteNo;
+		this.spaceNo = spaceNo;
+		this.id = id;
+	}
+
+	public int getInviteNo() {
+		return inviteNo;
+	}
+
+	public void setInviteNo(int inviteNo) {
+		this.inviteNo = inviteNo;
+	}
+
+	public int getSpaceNo() {
+		return spaceNo;
+	}
+
+	public void setSpaceNo(int spaceNo) {
+		this.spaceNo = spaceNo;
+	}
+
+	public List<String> getId() {
+		return id;
+	}
+
+	public void setId(List<String> id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Invite [inviteNo=" + inviteNo + ", spaceNo=" + spaceNo + ", id=" + id + "]";
+	}
+	
+	
+}

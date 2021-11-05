@@ -10,6 +10,7 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
+	<!-- @Controller 어노테이션을 읽어 컨트롤러로 식별 -->
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
@@ -21,7 +22,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 다음 패키지로 선언된 클래스에 어노테이션을 읽어 자동으로 빈으로 등록한다. -->
 	<context:component-scan base-package="com.work.dto" />
+	
 	
 	
 	

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.work.dto.dao.SpaceMemberDaoImpl">
+	
+	<!-- member insert -->
+	<insert id="memberInsert" parameterType="com.work.dto.SpaceMemberVO">
+		INSERT INTO SPACE_MEMBER(SPACE_MEMBER_NO, SPACE_NO, MEMBER_NO)
+			VALUES(SPACE_MEMBER_NO_SEQ.NEXTVAL, #{spaceNo}, #{memberNo)
+	</insert>
+
+</mapper>
