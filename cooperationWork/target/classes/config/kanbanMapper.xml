@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kanbanDao">
+	
+	<select id="selectToDo" parameterType="int" resultType="kanbanVo">
+		select 
+		*
+		from (select * from KANBAN_DETAIL order by CREATE_DATE desc)
+		where 
+		SPACE_NO = #{spaceNo}
+		and STATUS = 'ToDo'
+	</select>
+
+	<select id="selectPro" parameterType="int" resultType="kanbanVo">
+		select *
+		from (select * from KANBAN_DETAIL order by CREATE_DATE desc)
+		where 
+		SPACE_NO = #{spaceNo}
+		and STATUS = 'Progress'
+	</select>
+
+	<select id="selectDone" parameterType="int" resultType="kanbanVo">
+		select *
+		from (select * from KANBAN_DETAIL order by CREATE_DATE desc)
+		where 
+		SPACE_NO = #{spaceNo}
+		and STATUS = 'Done'
+	</select>
+	
+	<insert id="insertKanban" parameterType="kanbanVo">
+		insert into KANBAN_DETAIL(KANBAN_DETAIL_NO,SPACE_NO,SPACE_MEMBER_NO,CONTENT,STATUS,CREATE_DATE,CHARGE)
+		values(KANBAN_DETAIL_NO_SEQ.nextval,#{spaceNo},#{spaceMemberNo},#{content},#{status},#{creatDate},#{charge})
+	</insert>
+
+</mapper>
