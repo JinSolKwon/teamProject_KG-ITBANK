@@ -9,7 +9,7 @@ import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.inject.Inject; 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -38,9 +38,10 @@ public class BoardController {
 	    // 로깅을 위한 변수
 	    private static final Logger logger = LoggerFactory.getLogger(WorkController.class);
 	    
-	    private static final String FILE_PATH ="c:\\javastudy\\fileupload";
+	    private static final String FILE_PATH ="d:\\javastudy\\jspupload";
+	    //private static final String FILE_PATH ="c:\\javastudy\\fileupload";
 	    
-	    @Inject
+	    @Inject 
 	    BoardService boardService;
 	    
 	    @RequestMapping("boardMain")
@@ -214,8 +215,6 @@ public class BoardController {
 				) {
 			int pageNum = (int)req.getAttribute("pageNum");
 			String pass=boardService.pass(num);
-			System.out.println(pass);
-			System.out.println(pwd);
 			if (!pass.equals(pwd)) {
 				model.addAttribute("msg", "비밀번호가 일치하지 않습니다.");
 				return "redirect:/work/boardDelete/"+num;
@@ -260,7 +259,7 @@ public class BoardController {
 		}		
 			
 		@PostMapping(value="boardUpdate/{num}")
-		public String edit(@RequestParam("file")MultipartFile file, @Valid BoardVo vo, BindingResult result, String pwd, 
+		public String edit(@RequestParam("file")MultipartFile file, @Valid BoardVo vo, BindingResult result, 
 				SessionStatus sessionStatus, Model model, HttpSession session, @PathVariable int num) throws IllegalStateException, IOException {
 			
 			System.out.println(vo);

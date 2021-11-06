@@ -1,6 +1,5 @@
 package com.work.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +32,30 @@ public class KanbanServiceImpl implements KanbanService{
 	@Override
 	public void insertKanban(KanbanVo vo) {
 		kanbanDao.insertKanban(vo);
+	}
+	
+	@Override
+	public KanbanVo selectOne(int kanbanDetailNo) {
+		return kanbanDao.selectOne(kanbanDetailNo);
+	}
+	
+	@Override
+	public List<KanbanVo> nameList(int spaceNo) {
+		return kanbanDao.selectMemberAllName(spaceNo);
+	}
+	
+	@Override
+	public int updateKanban(KanbanVo vo) {
+		return kanbanDao.updateKanban(vo);
+	}
+	
+	@Override
+	public String pass(int kanbanDetailNo) {
+		return kanbanDao.getPass(kanbanDetailNo);
+	}
+	
+	@Override
+	public int deleteKanban(int kanbanDetailNo) {
+		return kanbanDao.deleteKanban(kanbanDetailNo);
 	}
 }

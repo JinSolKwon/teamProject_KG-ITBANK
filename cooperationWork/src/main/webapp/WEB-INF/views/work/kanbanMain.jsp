@@ -122,7 +122,7 @@
 					<c:forEach var="toDo" items="${toDo}">
 					<tr>
 						<td style="text-align:left;line-height:130%;">
-							<a href="#">
+						<a href="<c:url value="kanbanDetailPopup/${toDo.kanbanDetailNo}"/>" onClick="window.open(this.href,'','width = 400, height = 500,location=no');return false;">
 								&nbsp ${toDo.content}<br>
 								&nbsp 담당자:${toDo.charge}<br>
 								<c:if test="${toDo.createDate == toDo.updateDate }">
@@ -131,7 +131,7 @@
 								<c:if test="${toDo.createDate != toDo.updateDate }">
 								&nbsp 최근 수정: ${toDo.updateDate}
 								</c:if>
-							</a>
+						</a>
 						</td>
 					</tr>
 					</c:forEach>
@@ -155,7 +155,7 @@
 						<c:forEach var="progress" items="${progress}">
 					<tr>
 						<td style="text-align:left;line-height:130%;">
-							<a href="#">
+						<a href="<c:url value="kanbanDetailPopup/${progress.kanbanDetailNo}"/>" onClick="window.open(this.href,'','width = 400, height = 500,location=no');return false;">
 								&nbsp ${progress.content}<br>
 								&nbsp 담당자:${progress.charge}<br>
 								<c:if test="${progress.createDate == progress.updateDate }">
@@ -164,7 +164,7 @@
 								<c:if test="${progress.createDate != progress.updateDate }">
 								&nbsp 최근 수정: ${progress.updateDate}
 							</c:if>
-							</a>	
+						</a>
 						</td>
 					</tr>
 					</c:forEach>
@@ -188,7 +188,8 @@
 						<c:forEach var="done" items="${done}">
 						<tr>
 							<td style="text-align:left;line-height:130%;">
-								<a href="#">
+								<a href="<c:url value="kanbanDetailPopup/${done.kanbanDetailNo}"/>" onClick="window.open(this.href,'','width = 400, height = 500');return false;">
+									<input type="hidden" id="num" name="num" value="${kanban.kanbanDetailNo}" >
 									&nbsp ${done.content}<br>
 									&nbsp 담당자:${done.charge}<br>
 									<c:if test="${done.createDate == done.updateDate }">
@@ -205,7 +206,7 @@
 			</table>
 			</div>
 			<input type="button" style="width: 80px; height: 40px; font-size: 150%; border-radius: 10px; float:right; margin-top:10px;"
-						value="추가" onclick="window.open('kanbanWritePopup','kanbanWritePopup','width = 600, height = 600 left = 100, top=50,location=no')">
+						value="추가" onclick="insertPopup()">
 		</div>
 	</section>
 	<script>
@@ -223,7 +224,18 @@
     sidebar.classList.toggle("close");
   });
   
-  
+  function insertPopup(){
+	  var popupWidth = 400;
+	  var popupHeight = 400;
+	  // 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
+	  var popupX = (window.screen.width / 2) - (popupWidth / 2);
+	  // 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
+	  var popupY= (window.screen.height / 2) - (popupHeight / 2);
+	  // window.name = "부모창 이름";
+	  window.name = "kanbanMain";
+	  // window.open("자식창 이름","불러올 자식 창의 닉네임", "팝업창 옵션")
+	  window.open("kanbanWritePopup","kanbanWritePopup",'width = 400, height = 500, top= '+popupX+', left='+popupY/*+' ,location=no'*/+ ', screenX='+ popupX + ', screenY= '+ popupY);
+  }
   </script>
 </body>
 </html>

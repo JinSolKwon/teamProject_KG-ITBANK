@@ -39,4 +39,29 @@ public class KanbanDaoImpl implements KanbanDao {
 	public void insertKanban(KanbanVo vo) {
 		sqlSessionTemplate.insert("insertKanban",vo);	
 	}
+	
+	@Override
+	public KanbanVo selectOne(int kanbanDetailNo) {
+		return sqlSessionTemplate.selectOne("selectOne", kanbanDetailNo);
+	}
+	
+	@Override
+	public List<KanbanVo> selectMemberAllName(int spaceNo) {
+		return sqlSessionTemplate.selectList("selectMemberName", spaceNo);
+	}
+	
+	@Override
+	public int updateKanban(KanbanVo vo) {
+		return sqlSessionTemplate.update("updateKanban", vo);
+	}
+	
+	@Override
+	public String getPass(int kanbanDetailNo) {
+		return sqlSessionTemplate.selectOne("getpass", kanbanDetailNo);
+	}
+	
+	@Override
+	public int deleteKanban(int kanbanDetailNo) {
+		return sqlSessionTemplate.delete("deleteKanban", kanbanDetailNo);
+	}
 }

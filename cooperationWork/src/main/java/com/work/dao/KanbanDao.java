@@ -19,21 +19,19 @@ public interface KanbanDao {
 	//칸반보드 글 넣기
 	public abstract void insertKanban(KanbanVo vo);
 	
-	//게시글 상세정보 가져오기 메서드
+	//칸반보드 글 하나 가져오기
+	public abstract KanbanVo selectOne(int kanbanDetailNo);
 	
+	//해당 워크스페이스에 소속된 멤버 이름 모두 가져오기
+	public abstract List<KanbanVo> selectMemberAllName(int spaceNo);
 	
-	//패스워드 가져오기 메서드
+	//칸반보드 글 수정
+	public abstract int updateKanban(KanbanVo vo);
 	
+	// 작성 유저 비밀번호 가져오기
+	public abstract String getPass(int kanbanDetailNo);
 	
-	//게시글 삭제 메서드
-	
-	
-	//작성 유저 번호 가져오기 메서드
-	
-	
-	// 파일 수정 시 기존파일 삭제 메서드
-	
-	
-	// 게시물 수정 메서드
+	// 해당 칸반 게시물 삭제
+	public abstract int deleteKanban(int kanbanDetailNo);
 	
 }

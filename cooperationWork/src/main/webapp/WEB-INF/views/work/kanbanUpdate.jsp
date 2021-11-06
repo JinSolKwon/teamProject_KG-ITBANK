@@ -3,25 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-	<script>
-		// 자동으로 팝업 창이 닫히게 하는 함수
-		function popupClose(form) {
-			//form의 target을 부모창으로 설정함
-			form.target = opener.name;
-			
-			form.submit();
-			
-			if (opener != null) {
-				opener.insert = null;
-				
-				self.close();
-			}
-			self.close();
-		}
-	</script>
 <head>
 <meta charset="UTF-8">
-<title>업무 추가</title>
+<title>칸반 내용 수정</title>
 <style>
 
 	@font-face {
@@ -70,14 +54,13 @@
 </style>
 </head>
 <body>
-	
-	<h1>업무 추가</h1>
-	<form name="writeform" action="<c:url value='/work/kanbanWrite'/>" method="POST" target="kanbanMain">
+	<h1>칸반 내용 수정</h1>
+	<form action="<c:url value='/work/kanbanUpdate/${kanban.kanbanDetailNo}'/>" method="POST" target="kanbanMain">
 	<div>
 		<table>
 			<tr>
 				<td>내용<td>&nbsp
-				<input type="text" id="content" name="content" >
+				<input type="text" id="content" name="content" value="${kanban.content}">
 			</tr>
 			<tr>
 				<td>상태<td>&nbsp
@@ -89,18 +72,26 @@
 			</tr>
 			<tr>
 				<td>담당<td>&nbsp
-				<select name="charge" id="charge">
+				<select name="charge" id="charge" >
 					<c:forEach var="nameList" items="${nameList}" >
-					<option value="${nameList.name}">${nameList.name}</option>
+						<c:choose>
+							<c:when test="${kanban.charge eq nameList.name}">
+								<option value="${nameList.name}" selected>${nameList.name}</option>
+							</c:when>
+							<c:otherwise>
+								<option value="${nameList.name}">${nameList.name}</option>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 				</select>
 			</tr>
 		</table>
 		<br>
-		<input type="submit" id="btn" value="추가" onclick="window.close()">
-		<input type="reset" id="btn" value="다시작성 " >
-		<input type="button" id="btn" value="닫기" onclick="window.close()">		
+		<input type="submit" id="btn" value="수정" onclick="window.close()">
+		<input type="button" id="btn" value="이전" onclick="window.location='<c:url value="/work/kanbanDetailPopup/${kanban.kanbanDetailNo}"/>'">
+		<input type="button" id="btn" value="닫기" onclick="window.close()">
 	</div>
-	</form>
+</form>		
+	
 </body>
 </html>

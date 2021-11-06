@@ -14,4 +14,13 @@ public interface KanbanService {
 	
 	public abstract void insertKanban(KanbanVo vo);
 	
+	public abstract KanbanVo selectOne(int kanbanDetailNo);
+	
+	public abstract List<KanbanVo> nameList(int spaceNo);
+	
+	public abstract int updateKanban(KanbanVo vo);
+	
+	public abstract String pass(int kanbanDetailNo);
+	
+	public abstract int deleteKanban(int kanbanDetailNo);
 }

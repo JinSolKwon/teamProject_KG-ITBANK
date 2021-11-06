@@ -59,36 +59,102 @@ public class KanbanController {
     	toDo = kanbanService.toDoList(spaceNo);
     	progress = kanbanService.progressList(spaceNo);
     	done = kanbanService.doneList(spaceNo);
-    	
-    	System.out.println(toDo);
-    	System.out.println(progress);
-    	System.out.println(done);
-    	
+   	
     	model.addAttribute("toDo", toDo);
     	model.addAttribute("progress", progress);
     	model.addAttribute("done", done);
     	
+    	
     	return "work/kanbanMain";
     }
-	    
-    @GetMapping(value="kanbanWrite")
-    public String kanbanWrite(Model model, HttpSession session) {
-    	KanbanVo vo = new KanbanVo();
+	   //지우려했는데 혹시 몰라서 남겨둠
+//    @GetMapping(value="kanbanWrite")
+//    public String kanbanWrite(Model model, HttpSession session) {
+//    	KanbanVo vo = new KanbanVo();
+//    	vo.setSpaceNo(spaceNo);
+//    	vo.setSpaceMemberNo(spaceMemberNo);
+//    	
+//    	model.addAttribute("vo", vo);
+//    		
+//    	return null;
+//    }
+    
+    @PostMapping(value="kanbanWrite")
+    public String kanbanWriteAc(Model model, @Valid KanbanVo vo, HttpSession session) {
     	vo.setSpaceNo(spaceNo);
     	vo.setSpaceMemberNo(spaceMemberNo);
     	
-    	model.addAttribute("vo", vo);
+    	System.out.println(vo);
+    	
+    	kanbanService.insertKanban(vo);
     		
-    	return null;
+    	return "redirect:/work/kanbanMain";
     }
     
-    @GetMapping("kanbanWritePopup")
-    public String kanbanWritePopup() {
+    @GetMapping(value="kanbanWritePopup")
+    public String kanbanWritePopup(Model model, HttpSession session) {
+    	List<KanbanVo> nameList= null;
+    	nameList = kanbanService.nameList(spaceNo);
+    	
+    	model.addAttribute("nameList", nameList);
+    	
     	return "work/kanbanWritePopup";
     }
     
-    @PostMapping("kanbanWritePopup")
-    public String kanbanAddPopup() {
-    	return "work/kanbanWritePopup";
+    @RequestMapping(value="kanbanDetailPopup/{num}")
+    public String kanbanDetail(Model model, @PathVariable("num") int num, HttpSession session) {
+    	KanbanVo vo = kanbanService.selectOne(num);
+    	
+    	model.addAttribute("kanban",vo);
+    	
+    	return "work/kanbanDetailPopup";
     }
+    
+    @GetMapping(value="kanbanUpdate/{num}")
+    public String kanbanUpdatePopup(Model model, @PathVariable int num, HttpSession session) {
+    	List<KanbanVo> nameList= null;
+    	nameList = kanbanService.nameList(spaceNo);
+    	KanbanVo vo = kanbanService.selectOne(num);
+    	
+    	model.addAttribute("nameList", nameList);
+    	model.addAttribute("kanban", vo);
+    	
+    	return "work/kanbanUpdate";
+    }
+    
+    @PostMapping(value="kanbanUpdate/{num}")
+    public String kanbanUpdatePopup(Model model, @Valid KanbanVo vo,@PathVariable int num, HttpSession session){
+    	vo.setKanbanDetailNo(num);
+    	vo.setSpaceNo(spaceNo);
+    	
+    	kanbanService.updateKanban(vo);
+    	System.out.println(vo);
+ 
+    	return "redirect:/work/kanbanMain";
+    }
+    
+    @GetMapping(value="kanbanDelete/{num}")
+    public String kanbanDeletePopup(Model model, @PathVariable int num, HttpSession session) {
+    	KanbanVo vo = kanbanService.selectOne(num);
+    	
+    	model.addAttribute("kanban",vo);
+    	
+    	return "work/kanbanDelete";
+    }
+    
+    @PostMapping(value="kanbanDelete/{num}")
+    public String kanbanDeletePopup(Model model, @RequestParam("pwd") String pwd, @PathVariable int num, HttpSession session) {
+
+    	String pass = kanbanService.pass(num);
+    	
+    	if (!pass.equals(pwd)) {
+    		model.addAttribute("msg","비밀번호가 일치하지 않습니다.");
+    		return "redirect:/work/kanbanDelete/"+num;
+    	} 
+    	
+    	kanbanService.deleteKanban(num);
+    	
+    	return "redirect:/work/kanbanMain";
+    }
+    
 }

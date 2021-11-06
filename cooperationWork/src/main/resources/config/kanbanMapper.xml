@@ -31,7 +31,43 @@
 	
 	<insert id="insertKanban" parameterType="kanbanVo">
 		insert into KANBAN_DETAIL(KANBAN_DETAIL_NO,SPACE_NO,SPACE_MEMBER_NO,CONTENT,STATUS,CREATE_DATE,CHARGE)
-		values(KANBAN_DETAIL_NO_SEQ.nextval,#{spaceNo},#{spaceMemberNo},#{content},#{status},#{creatDate},#{charge})
+		values(KANBAN_DETAIL_NO_SEQ.nextval,#{spaceNo},#{spaceMemberNo},#{content},#{status},SYSDATE,#{charge})
 	</insert>
 
+	<select id="selectOne" parameterType="int" resultType="kanbanVo">
+		select *
+		from KANBAN_DETAIL
+		where KANBAN_DETAIL_NO=#{kanbanDetailNo}
+	</select>
+	
+	<select id="selectMemberName" parameterType="int" resultType="kanbanVo">
+		select A.NAME
+		from 
+        MEMBER A,
+        SPACE_MEMBER B
+		where 
+        B.SPACE_NO = #{spaceNo}
+        and A.MEMBER_NO=B.MEMBER_NO
+		
+	</select>
+	
+	<update id="updateKanban" parameterType="KanbanVo">
+		update KANBAN_DETAIL set CONTENT=#{content}, charge=#{charge}, STATUS=#{status}, UPDATE_DATE=SYSDATE 
+		where KANBAN_DETAIL_NO=#{kanbanDetailNo}
+	</update>
+	
+	<select id="getpass" parameterType="int" resultType="String">
+		select PASSWORD
+		from
+		(select PASSWORD from MEMBER where MEMBER_NO=
+			(select MEMBER_NO from SPACE_MEMBER where SPACE_MEMBER_NO=
+				(select SPACE_MEMBER_NO from KANBAN_DETAIL where KANBAN_DETAIL_NO=#{kanbanDetailNo})))
+	</select>
+	
+	<delete id="deleteKanban" parameterType="int">
+		delete from 
+		KANBAN_DETAIL
+		where KANBAN_DETAIL_NO=#{kanbanDetailNo}
+	</delete>
+	
 </mapper>
