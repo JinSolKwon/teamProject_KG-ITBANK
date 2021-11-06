@@ -13,6 +13,12 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+	
+	<!-- mybatis연동을 위해 추가한 파트입니다. -->
+	<!-- ojdbc6.jar 레퍼런스 주소 -->
+	<repositories>
+	</repositories>	
+	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -134,7 +140,39 @@
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<version>19.7.0.0</version>
-		</dependency>                   
+		</dependency>   
+		
+		<!-- 여기부터 제가 추가한 부분입니다. -->
+		
+		
+		<!-- 첫번째 spring-websocket은 WebSocket 라이브러리이며,
+		org.springframework.web.socket.handler.TextWebSocketHandler 를 사용 할 수 있게 해준다.
+		* spring 버전과 동일하게 설정하였다. ${org.springframework-version} -->
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>${org.springframework-version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+		
+		<!-- 두번째 jackson-databind는 웹소켓 채팅의 Json 타입을 Java형태로 바꿔주는 역할을 한다. 
+		com.fasterxml.jackson.databind.ObjectMapper 를 사용 할 수 있게 해준다. -->
+		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.6</version>
+        </dependency>
+        <dependency>
+		  <groupId>com.googlecode.json-simple</groupId>
+		  <artifactId>json-simple</artifactId>
+		  <version>1.1.1</version>
+		</dependency>
+		                
 	</dependencies>
     <build>
         <plugins>
