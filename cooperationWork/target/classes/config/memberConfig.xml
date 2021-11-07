@@ -12,5 +12,7 @@
 	
 	<typeAliases> 
 		<typeAlias alias="memberVo" type="com.work.dto.MemberVo"/>
+		<typeAlias alias="kanbanVo" type="com.work.dto.KanbanVo"/>
+		<typeAlias alias="calendarVo" type="com.work.dto.CalendarVo"/>
 	</typeAliases>
 </configuration>

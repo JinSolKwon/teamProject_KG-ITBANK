@@ -5,7 +5,50 @@
 <head>
 <meta charset="UTF-8">
 <title>일정 추가</title>
+<style>
+@font-face {
+      src : url("${pageContext.request.contextPath}/resources/font/BMJUA_ttf.ttf");
+      font-family: "jua";
+	}
+	
+	body{
+	  font-family: 'jua';
+	  background: #E4E9F7;
+	}
 
+	#btn{
+		width:60px;
+		height:30px;
+		font-size:80%;
+		border-radius:10px;
+		font-family: 'jua';
+		text-align: center;
+	}
+	h1 {
+		text-align:center;
+		font-family: 'jua';
+		margin-top: 50px;
+	}
+	#content {
+		height:20px;
+		width: 150px;
+		font-family: 'jua';
+	}
+	table{
+		font-family: 'jua';
+	}
+	
+	div{
+		float:center;
+		padding-left:25%;
+	}
+	th,td{
+		height:50px;
+	}
+	#status, #charge{
+		height:20px;
+		width:100px;
+</style>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <!-- datepicker -->

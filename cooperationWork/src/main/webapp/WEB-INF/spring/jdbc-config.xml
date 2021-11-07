@@ -37,6 +37,7 @@
 			<list>
 				<value>classpath:config/boardMapper.xml</value>
 				<value>classpath:config/kanbanMapper.xml</value>
+				<value>classpath:config/calendarMapper.xml</value>
 				<value>classpath:config/memberMapper.xml</value>
 				<value>classpath:config/spaceMapper.xml</value>
 				<value>classpath:config/workMapper.xml</value>
@@ -49,6 +50,10 @@
 	</bean>
 	
 	<bean id="kanbanDao" class="com.work.dao.KanbanDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate"/> 
+	</bean>
+	
+	<bean id="calendarDao" class="com.work.dao.CalendarDaoImpl">
 		<constructor-arg ref="sqlSessionTemplate"/> 
 	</bean>
 	

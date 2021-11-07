@@ -38,8 +38,8 @@ public class BoardController {
 	    // 로깅을 위한 변수
 	    private static final Logger logger = LoggerFactory.getLogger(WorkController.class);
 	    
-	    private static final String FILE_PATH ="d:\\javastudy\\jspupload";
-	    //private static final String FILE_PATH ="c:\\javastudy\\fileupload";
+//	    private static final String FILE_PATH ="d:\\javastudy\\jspupload";
+	    private static final String FILE_PATH ="c:\\javastudy\\fileupload";
 	    
 	    @Inject 
 	    BoardService boardService;
