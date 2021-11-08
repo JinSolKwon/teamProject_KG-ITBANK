@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Mapper">
+
+<insert id="insert">
+		INSERT INTO MYBOARD(TITLE ,
+						   CONTENT,
+						   REGDATE,
+						   READCOUNT
+					)VALUES(#{title},										  
+							 #{content},											  
+								SYSDATE,0
+								)
+</insert>
+
+<update id="Update">
+		UPDATE MYBOARD SET
+		TITLE = #{title},
+		CONTENT = #{content},
+		REGDATE = #{sysdate}
+		WHERE NUM = #{num}
+</update>
+
+<delete id="Delete">
+		DELETE FROM MYBOARD
+		WHERE NUM = #{num}
+</delete>
+
+<select id="list" resultType="MyBoardVo">
+		SELECT NUM
+			   ,TITLE
+			   ,CONTENT
+			   ,REGDATE
+			   ,READCNT
+		  FROM MYBOARD
+		  ORDER BY NUM DESC
+</select>
+
+<select id="read" parameterType="int" resultType="MyBoardVo">
+		SELECT NUM
+			  ,TITLE
+			  ,CONTENT
+			  ,REGDATE
+			  ,READCNT
+		 FROM MYBOARD
+		 WHERE NUM = #{num}
+</select>
+
+<select id="read" parameterType="int">
+		SELECT READCNT
+		 FROM MYBOARD
+		 WHERE NUM = #{num}
+</select>
+
+<update id="readCnt" parameterType="int">
+   UPDATE MYBOARD SET READCNT = READCNT+1 where NUM=#{num}
+</update>
+<select id="selectList" resultType="String">
+			SELECT NUM,
+				   TITLE,
+				   CONTENT,
+				   REGDATE,
+				   READCNT
+			FROM MYBOARD
+			WHERE TITLE LIKE('%',#{keyword},'%') 
+			ORDER BY NUM DESC 
+</select>
+</mapper>
