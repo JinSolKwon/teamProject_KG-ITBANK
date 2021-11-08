@@ -3,11 +3,10 @@ package com.work.dto.service;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.work.dto.InviteList;
 import com.work.dto.InviteUtils;
 import com.work.dto.InviteVO;
 import com.work.dto.dao.InviteDao;
@@ -29,21 +28,28 @@ public class InviteServiceImpl implements InviteService{
 
 
 	@Override
-	public void inviteMember(InviteVO vo , int spaceInfo) throws Exception {
+	public void inviteMember(InviteVO vo, int spaceInfo, int memberInfo) throws Exception {
 		if(vo.getId() != null) {
 			System.out.println(inviteUtils);
-			List<Map<String,Object>> listMap = inviteUtils.inviteList(vo, spaceInfo);
+			List<Map<String,Object>> listMap = inviteUtils.inviteList(vo, spaceInfo, memberInfo);
 			
 			int inviteSize = listMap.size();
 			if(inviteSize > 10) {
 				inviteSize = 10;
 			}
 			for (int i=0; i<inviteSize; i++) {
-				dao.insertMember(listMap.get(i));
+			 dao.insertMember(listMap.get(i));
 			}
-	}
-		
-		
+	}	
 	}
 	
-}
+	@Override
+	public int inviteMemberNo(String id) {
+		return dao.selectMemberNo(id);
+	}
+	
+//	@Override
+//	public List<InviteList> inviteList(String id) {
+//		return dao.inviteList(id);
+	}
+

@@ -7,7 +7,7 @@
 	<!-- member insert -->
 	<insert id="memberInsert" parameterType="com.work.dto.SpaceMemberVO">
 		INSERT INTO SPACE_MEMBER(SPACE_MEMBER_NO, SPACE_NO, MEMBER_NO)
-			VALUES(SPACE_MEMBER_NO_SEQ.NEXTVAL, #{spaceNo}, #{memberNo)
+			VALUES(SPACE_MEMBER_NO_SEQ.NEXTVAL, #{spaceNo}, #{memberNo})
 	</insert>
 
 </mapper>

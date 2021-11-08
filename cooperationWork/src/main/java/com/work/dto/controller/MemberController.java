@@ -1,5 +1,7 @@
 package com.work.dto.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,11 +10,14 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.work.dto.InviteList;
 import com.work.dto.MemberVO;
+import com.work.dto.service.InviteService;
 import com.work.dto.service.MemberService;
 
 @Controller
@@ -22,6 +27,8 @@ public class MemberController {
 	
 	@Inject
 	MemberService service;
+//	InviteService invite;
+	
 	
 	//회원가입
 	@RequestMapping(value = "/member/register", method = RequestMethod.GET)
@@ -41,8 +48,10 @@ public class MemberController {
 	
 	//로그인
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
-	public String login(MemberVO vo, HttpServletRequest req, HttpServletResponse res, RedirectAttributes rttr) throws Exception{
+	public String login(Model model,MemberVO vo, HttpServletRequest req, HttpServletResponse res, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
+		
+		
 		
 		HttpSession session = req.getSession();
 		System.out.println("req:"+req);
@@ -60,6 +69,9 @@ public class MemberController {
 		System.out.println(session.getAttribute("member_no"));
 		System.out.println(session.getAttribute("member"));
 		System.out.println(session.getAttribute("id"));
+		
+//		List<InviteList> inv = invite.inviteList(login.getId());
+//		model.addAttribute("invite",inv);
 		
 		return "/member/login";
 	}

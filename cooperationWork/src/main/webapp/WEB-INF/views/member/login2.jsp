@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <!-- saved from url=(0038)http://localhost:8080/dto/member/login -->
@@ -45,7 +44,6 @@
 	<div id="scroll">
 		<table class="invitelist">
 			<tbody>
-			
 				<tr>
 					<td style="width: 450px;">새 워크스페이스1(관리자 이름)</td>
 					<td style="width: 100px;">입장 및 삭제</td>
@@ -66,7 +64,7 @@
 		</table>
 	</div>
 <div id="ble" style="margin-top: 50px;">
-		<table class="inviteList">
+		<table class="invitelist">
 			<thead>
 				<tr>
 					<th style="width: 450px;">초대 목록</th>
@@ -76,27 +74,24 @@
 		</table>
 	</div>
 	<div id="scroll">
-<!-- 		<table class="inviteList" > -->
-<!-- 			<tbody> -->
-			
-<%-- 			<c:choose> --%>
-<%-- 				<c:when test="${empty }"> --%>
-<!-- 					<tr> -->
-<!-- 						<td style="width: 450px;">받은 초대가 없습니다.</td> -->
-<!-- 						<td style="width: 100px;" align="center">/</td> -->
-<!-- 					</tr> -->
-<%-- 				</c:when> --%>
-<%-- 				<c:when test="${!empty invite}"> --%>
-<%-- 				<c:forEach var="invite" items="${invite}"> --%>
-<!-- 				<tr> -->
-<%-- 					<td style="width: 450px;"><c:out value="${invite.spaceName}${invite.name}"></c:out></td> --%>
-<!-- 					<td style="width: 100px;">수락 및 거절</td> -->
-<!-- 				</tr> -->
-				
-<%-- 				</c:forEach> --%>
-<%-- 				</c:when> --%>
-<%-- 			</c:choose> --%>
-			
+		<table class="spacelist">
+			<tbody>
+				<tr>
+					<td style="width: 450px;">짐레이너 협업(관리자 이름)</td>
+					<td style="width: 100px;">수락 및 거절</td>
+				</tr>
+				<tr>
+					<td>A조 Project(관리자 이름)</td>
+					<td>수락 및 거절</td>
+				</tr>
+				<tr>
+					<td>모르는 프로젝트(관리자 이름)</td>
+					<td>수락 및 거절</td>
+				</tr>
+				<tr>
+					<td>화이팅 해봅시다(관리자 이름)</td>
+					<td>수락 및 거절</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

@@ -15,6 +15,7 @@
 		<typeAlias alias="spaceVO" type="com.work.dto.SpaceVO" />
 		<typeAlias alias="inviteVO" type="com.work.dto.InviteVO" />
 		<typeAlias alias="spaceMemberVO" type="com.work.dto.SpaceMemberVO" />
+		<typeAlias alias="inviteList" type="com.work.dto.InviteList" />
 	</typeAliases>
 	
 </configuration>

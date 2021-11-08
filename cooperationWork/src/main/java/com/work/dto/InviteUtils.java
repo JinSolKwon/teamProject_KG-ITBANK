@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class InviteUtils {
-	public List<Map<String, Object>> inviteList(InviteVO vo,int spaceInfo ){
+	public List<Map<String, Object>> inviteList(InviteVO vo,int spaceInfo, int memberInfo){
 		System.out.println("유틸 실행");
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 		Map<String, Object> listMap = null;
@@ -18,6 +18,7 @@ public class InviteUtils {
 			listMap = new HashMap<String, Object>();
 			listMap.put("id", vo.getId().get(i));
 			listMap.put("spaceNo", spaceInfo);
+			listMap.put("memberNo", memberInfo);
 			list.add(listMap);
 		}
 		System.out.println(list);

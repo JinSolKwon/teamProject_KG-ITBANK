@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.work.dto.SpaceVO;
+import com.work.dto.service.InviteService;
 import com.work.dto.service.SpaceService;
 
 @Controller
