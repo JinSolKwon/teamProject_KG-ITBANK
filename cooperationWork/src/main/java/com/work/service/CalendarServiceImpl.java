@@ -26,4 +26,9 @@ public class CalendarServiceImpl implements CalendarService{
 	public List<CalendarVo> showSchedule(int spaceNo) {
 		return calendarDao.showSchedule(spaceNo);
 	}
+	
+	@Override
+	public CalendarVo selectOne(int fcDetailNo) {
+		return calendarDao.selectOneCalendar(fcDetailNo);
+	}
 }

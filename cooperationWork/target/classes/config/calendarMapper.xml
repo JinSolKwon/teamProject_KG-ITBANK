@@ -5,9 +5,10 @@
 <mapper namespace="calendarDao">
 		<select id="showSchedule" parameterType="int" resultType = "calendarVo">
     		SELECT
+    			FC_DETAIL_NO as fcDetailNo,
     			SUBJECT, 
-    			EVENT_START_DATE as eventStartDate,
-    			EVENT_END_DATE as eventEndDate,
+    			TO_CHAR(EVENT_START_DATE, 'YYYY-MM-DD') as eventStartDate,
+    			TO_CHAR(EVENT_END_DATE, 'YYYY-MM-DD') as eventEndDate,
     			CONTENT
     		FROM
     			F_CALLENDER_DETAIL
@@ -16,6 +17,7 @@
     		ORDER BY 
     			FC_DETAIL_NO DESC
     	</select>
+    	
     	<insert id="addSchedule" parameterType = "calendarVo">
 	    	INSERT INTO
 	    		F_CALLENDER_DETAIL(FC_DETAIL_NO, SPACE_NO, SPACE_MEMBER_NO, SUBJECT,EVENT_START_DATE,EVENT_END_DATE,CONTENT)
@@ -23,4 +25,9 @@
 	    		(FC_DETAIL_NO_SEQ.nextval,#{spaceNo},#{spaceMemberNo},#{subject},#{eventStartDate},#{eventEndDate},#{content})
     	</insert>
     	
+    	<select id="selectOneCalendar" parameterType ="int" resultType="calendarVo">
+    		select FC_DETAIL_NO as fcDetailNo, SUBJECT, EVENT_START_DATE as eventStartDate, EVENT_END_DATE as eventEndDate
+    		from F_CALLENDER_DETAIL
+    		where FC_DETAIL_NO=#{fcDetailNo}
+    	</select>
 </mapper>

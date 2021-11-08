@@ -1,6 +1,7 @@
 package com.work.dto;
 
 import java.sql.Timestamp;
+import java.sql.Date;
 
 public class CalendarVo {
 	// MEMBER테이블
@@ -16,8 +17,8 @@ public class CalendarVo {
 	private int spaceNo;
 	private int spaceMemberNo;
 	private String subject;
-	private Timestamp eventStartDate;
-	private Timestamp eventEndDate;
+	private String eventStartDate;
+	private String eventEndDate;
 	private String content;
 	
 	public CalendarVo() {}
@@ -94,19 +95,19 @@ public class CalendarVo {
 		this.subject = subject;
 	}
 
-	public Timestamp getEventStartDate() {
+	public String getEventStartDate() {
 		return eventStartDate;
 	}
 
-	public void setEventStartDate(Timestamp eventStartDate) {
+	public void setEventStartDate(String eventStartDate) {
 		this.eventStartDate = eventStartDate;
 	}
 
-	public Timestamp getEventEndDate() {
+	public String getEventEndDate() {
 		return eventEndDate;
 	}
 
-	public void setEventEndDate(Timestamp eventEndDate) {
+	public void setEventEndDate(String eventEndDate) {
 		this.eventEndDate = eventEndDate;
 	}
 

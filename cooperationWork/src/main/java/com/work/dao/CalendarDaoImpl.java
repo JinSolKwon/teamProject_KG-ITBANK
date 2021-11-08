@@ -32,4 +32,9 @@ public class CalendarDaoImpl implements CalendarDao {
 	public List<CalendarVo> showSchedule(int spaceNo) {
 		return sqlSessionTemplate.selectList("showSchedule", spaceNo);
 	}
+	
+	@Override
+	public CalendarVo selectOneCalendar(int fcDetailNo) {
+		return sqlSessionTemplate.selectOne("selectOneCalendar", fcDetailNo);
+	}
 }

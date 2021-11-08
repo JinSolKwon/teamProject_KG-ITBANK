@@ -9,4 +9,6 @@ public interface CalendarService {
 	public abstract List<CalendarVo> showSchedule(int spaceNo);
 	
 	public abstract void addSchedule(CalendarVo vo);
+	
+	public abstract CalendarVo selectOne(int fcDetailNo);
 }

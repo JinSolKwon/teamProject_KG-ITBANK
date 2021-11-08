@@ -11,4 +11,7 @@ public interface CalendarDao {
 	
 	// 스케쥴 추가하기
 	public abstract void addSchedule(CalendarVo vo);
+	
+	// 스케쥴 1개 가져오기
+	public abstract CalendarVo selectOneCalendar(int fcDetailNo);
 }

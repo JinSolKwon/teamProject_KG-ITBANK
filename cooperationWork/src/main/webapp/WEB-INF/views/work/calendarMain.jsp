@@ -155,8 +155,8 @@
         	  %>	
         	    	  {
         	    	   title : '<%= vo.getSubject() %>',
-        	    	   start : '<%= vo.getEventStartDate() %>',
-        	    	   end : '<%= vo.getEventEndDate() %>'
+        	    	   start : "<%= vo.getEventStartDate()%>",
+        	    	   end : "<%= vo.getEventEndDate() + " 23:59:00"%>"
         	    	   },
         	  <%
         	  	}
@@ -167,10 +167,39 @@
         	  		   end : "2019-01-01"
         	  		  }
         	        ]
+	      , eventClick:function() {
+            	window.open("calendarList","calendarList","width = 600, height = 600 left = 100, top=50,location=no");
+          }
+
 	    });
 
 	    calendar.render();
 	  });
+  
+  //일정삭제
+  function deleteSch(modal, arg){
+	if(confirm('일정을 삭제하시겠습니까?')){
+		var data = {"gubun": "delete", "id" : arg.event.id, "allowyn": "0"};
+		//DB 삭제
+		$.ajax({
+		  url: "./deleteSch.jsp",
+		  type: "POST",
+		  data: JSON.stringify(data),
+		  dataType: "JSON",
+		  traditional: true,
+		  success : function(data, status, xhr){
+			  //alert(xhr.status);
+			  arg.event.remove();
+			  initModal(modal, arg);
+		  },
+		  error : function(xhr, status, error){
+			    //alert(xhr.responseText);
+			  alert('일정 삭제 실패<br>새로고침 후 재시도 해주세요');
+		  }
+		});
+		
+	}
+  }
   </script>
 </body>
 </html>

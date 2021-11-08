@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,6 @@
 	}
 
 	#btn{
-		margin-left:15%;
 		width:60px;
 		height:30px;
 		font-size:80%;
@@ -46,7 +46,7 @@
 		height:50px;
 	}
 	.group-body{
-		padding-left:35%;
+		padding-left:40%;
 	}
 	.ui-datepicker{ 
 		width: 150px;
@@ -80,23 +80,22 @@
 			<h3 class = "zTree-h3"> 시작 </h3>
 		</div>
 		<div class = "domain">
-			<input class = "date" id = "startDate" type = "text" name = "startDate" id = "startDate">
+			<input class = "date" id = "startDate" type = "text" name = "eventStartDate">
 		</div>
 		<div class = "domain">
 			<h3 class = "zTree-h3"> 종료 </h3>
 		</div>
 		<div class = "domain">
-			<input class = "date" id = "endDate" type = "text" name = "endDate" id = "endDate">
+			<input class = "date" id = "endDate" type = "text" name = "eventEndDate" >
 		</div>
 		<div class = "domain">
 			<h3 class = "zTree-h3"> 메모 </h3>
 		</div>
 		<div class = "domain">
-			<textarea class = "memo" id = "content" name = "content" rows = "5" cols = "20" placeholder="100글자까지 입력 가능합니다"></textarea> 
+			<textarea class = "memo" id = "memo" name = "content" rows = "5" cols = "20" placeholder="100글자까지 입력 가능합니다"></textarea> 
 		</div>
 	</form>
-		<br>
-		<button id = "btn" type= "button" onclick="click_ok();">확인</button>
+		<button class = "ok-button" type= "button" onclick="click_ok();">확인</button>
 	</div>	
 </div>
 </body>
