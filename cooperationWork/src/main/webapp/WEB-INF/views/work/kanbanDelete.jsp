@@ -48,16 +48,12 @@
 	th,td{
 		height:50px;
 	}
-	#status, #charge{
-		height:20px;
-		width:100px;
-	}
 </style>
 </head>
 <body>
 	<h1>칸반 내용 삭제</h1>
 	<div>
-		<form action="<c:url value='/work/kanbanDelete/${kanban.kanbanDetailNo}'/>" method="POST" target="kanbanMain">
+		<form action="<c:url value='/work/kanbanDelete/${kanban.kanbanDetailNo}'/>" method="POST">
 		<table>
 			<tr>
 				<td>내용</td>
@@ -81,7 +77,10 @@
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center;">
-					<label style="font-size: 120%">삭제하시려면 해당 계정의 패스워드를 입력 후 삭제를	클릭하세요.</label>
+					<label style="font-size: 120%">삭제하시려면 해당 계정의 패스워드를 입력 후 삭제를	클릭하세요.</label><br>
+					<c:if test="${param.msg != null || param.msg != ''}">
+						<label>${param.msg}</label>
+					</c:if>
 				</td>
 			</tr>
 			<tr>
@@ -91,7 +90,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" id="btn" value="삭제" onclick="window.close()" style="margin-left:35px;">
+					<input type="submit" id="btn" value="삭제" style="margin-left:35px;">
 					<input type="button" id="btn" value="이전" onclick="window.location='<c:url value="/work/kanbanDetailPopup/${kanban.kanbanDetailNo}"/>'">
 					<input type="button" id="btn" value="닫기" onclick="window.close()">			 
 				</td>

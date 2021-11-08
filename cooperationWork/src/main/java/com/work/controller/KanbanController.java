@@ -1,18 +1,8 @@
 package com.work.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -20,15 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.work.dto.KanbanVo;
 import com.work.service.KanbanService;
@@ -154,7 +140,18 @@ public class KanbanController {
     	
     	kanbanService.deleteKanban(num);
     	
-    	return "redirect:/work/kanbanMain";
+    	return "redirect:/work/kanbanDeleteAc";
     }
     
+    @GetMapping(value="kanbanDeleteAc")
+    public String kanbanDeleteAcPopup(Model model, HttpSession session) {
+    	
+    	return "work/kanbanDeleteAc";
+    }
+    
+    @PostMapping(value="kanbanDeleteAc")
+    public String kanbanDeleteAcPopup(Model model) {
+    	
+    	return "redirect:/work/kanbanMain";
+    }
 }

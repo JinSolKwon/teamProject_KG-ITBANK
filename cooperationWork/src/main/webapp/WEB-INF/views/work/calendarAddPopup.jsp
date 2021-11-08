@@ -17,6 +17,7 @@
 	}
 
 	#btn{
+		margin-left:15%;
 		width:60px;
 		height:30px;
 		font-size:80%;
@@ -40,14 +41,19 @@
 	
 	div{
 		float:center;
-		padding-left:25%;
 	}
 	th,td{
 		height:50px;
 	}
-	#status, #charge{
-		height:20px;
-		width:100px;
+	.group-body{
+		padding-left:35%;
+	}
+	.ui-datepicker{ 
+		width: 150px;
+		margin-right:40%;
+		margin-top: 10%;
+	
+	}
 </style>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -57,9 +63,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!-- custom -->
-<link href="resources/custom/css/schedule.css" rel="stylesheet" />	
-<script src="resources/custom/js/schedule.js" type="text/javascript"></script>
-
+<link href="${pageContext.request.contextPath}/resources/css/calendar/schdule.css" rel="stylesheet" />	
 <script src="${pageContext.request.contextPath}/resources/css/calendar/schedule.js"></script>
 </head>
 <body>
@@ -88,10 +92,11 @@
 			<h3 class = "zTree-h3"> 메모 </h3>
 		</div>
 		<div class = "domain">
-			<textarea class = "memo" id = "memo" name = "memo" rows = "5" cols = "20" placeholder="100글자까지 입력 가능합니다"></textarea> 
+			<textarea class = "memo" id = "content" name = "content" rows = "5" cols = "20" placeholder="100글자까지 입력 가능합니다"></textarea> 
 		</div>
 	</form>
-		<button class = "ok-button" type= "button" onclick="click_ok();">확인</button>
+		<br>
+		<button id = "btn" type= "button" onclick="click_ok();">확인</button>
 	</div>	
 </div>
 </body>

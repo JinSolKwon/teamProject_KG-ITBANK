@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.work.dao.BoardDao;
 import com.work.dao.CalendarDao;
 import com.work.dto.BoardVo;
+import com.work.dto.CalendarVo;
 
 @Service
 public class CalendarServiceImpl implements CalendarService{
@@ -16,4 +17,13 @@ public class CalendarServiceImpl implements CalendarService{
 	@Autowired
 	private CalendarDao calendarDao; 
 	
+	@Override
+	public void addSchedule(CalendarVo vo) {
+		calendarDao.addSchedule(vo);
 	}
+	
+	@Override
+	public List<CalendarVo> showSchedule(int spaceNo) {
+		return calendarDao.showSchedule(spaceNo);
+	}
+}

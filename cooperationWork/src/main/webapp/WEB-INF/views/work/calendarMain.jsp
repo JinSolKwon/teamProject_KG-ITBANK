@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import = "com.work.dto.CalendarVo" %>
+<%@page import = "java.util.List" %>
+<%@page import = "java.util.ArrayList" %>
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<%
+	List<CalendarVo> list = (ArrayList<CalendarVo>)request.getAttribute("showSchedule");
+%>
 <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/work.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/calendar/core/main.css">
@@ -141,14 +147,30 @@
 	      navLinks: true, // can click day/week names to navigate views
 	      businessHours: true, // display business hours
 	      editable: true,
-	      locale: "ko"
-	      
+	      locale: "ko",
+          events: [
+        	  <% 
+        	    	  for (int i = 0; i < list.size(); i++) {
+        	    	  	CalendarVo vo = (CalendarVo)list.get(i);
+        	  %>	
+        	    	  {
+        	    	   title : '<%= vo.getSubject() %>',
+        	    	   start : '<%= vo.getEventStartDate() %>',
+        	    	   end : '<%= vo.getEventEndDate() %>'
+        	    	   },
+        	  <%
+        	  	}
+        	  %>
+        	  		{
+        	  		   title : 'default',
+        	  		   start : "2019-01-01",
+        	  		   end : "2019-01-01"
+        	  		  }
+        	        ]
 	    });
 
 	    calendar.render();
 	  });
-
-
   </script>
 </body>
 </html>
