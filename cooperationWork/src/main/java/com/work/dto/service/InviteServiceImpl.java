@@ -49,7 +49,8 @@ public class InviteServiceImpl implements InviteService{
 	}
 	
 //	@Override
-//	public List<InviteList> inviteList(String id) {
+//	public List<InviteList> inviteList(String id) throws Exception{
 //		return dao.inviteList(id);
-	}
+//	}
 
+}

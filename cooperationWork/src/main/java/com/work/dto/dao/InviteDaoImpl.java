@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.work.dto.InviteList;
@@ -14,7 +14,7 @@ import com.work.dto.InviteVO;
 @Repository
 public class InviteDaoImpl implements InviteDao{
 	
-	@Inject SqlSessionTemplate sql;
+	@Inject SqlSession sql;
 	
 	InviteVO vo;
 	
@@ -29,8 +29,8 @@ public class InviteDaoImpl implements InviteDao{
 	}
 	
 //	@Override
-//	public List<InviteList> inviteList(String id) {
-//			return sql.selectList("com.work.dto.dao.InviteDaoImpl.inviteList");
-		}	
+//	public List<InviteList> inviteList(String id) throws Exception{
+//			return sql.selectList("com.work.dto.dao.MemberDaoImpl.inviteList");
+//		}	
 	
-
+}

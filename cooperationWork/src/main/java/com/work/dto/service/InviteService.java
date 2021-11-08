@@ -11,5 +11,5 @@ public interface InviteService {
 	
 	public int inviteMemberNo(String id);
 	
-//	public List<InviteList> inviteList(String id);
+//	public List<InviteList> inviteList(String id) throws Exception;
 }

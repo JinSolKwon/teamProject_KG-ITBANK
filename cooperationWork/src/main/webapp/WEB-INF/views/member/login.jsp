@@ -76,26 +76,29 @@
 		</table>
 	</div>
 	<div id="scroll">
-<!-- 		<table class="inviteList" > -->
-<!-- 			<tbody> -->
+		<table class="inviteList" >
+			<tbody>
 			
-<%-- 			<c:choose> --%>
-<%-- 				<c:when test="${empty }"> --%>
-<!-- 					<tr> -->
-<!-- 						<td style="width: 450px;">받은 초대가 없습니다.</td> -->
-<!-- 						<td style="width: 100px;" align="center">/</td> -->
-<!-- 					</tr> -->
-<%-- 				</c:when> --%>
-<%-- 				<c:when test="${!empty invite}"> --%>
-<%-- 				<c:forEach var="invite" items="${invite}"> --%>
-<!-- 				<tr> -->
-<%-- 					<td style="width: 450px;"><c:out value="${invite.spaceName}${invite.name}"></c:out></td> --%>
-<!-- 					<td style="width: 100px;">수락 및 거절</td> -->
-<!-- 				</tr> -->
+			<c:choose>
+				<c:when test="${empty invite}">
+					<tr>
+						<td style="width: 450px;">받은 초대가 없습니다.</td>
+						<td style="width: 100px;" align="center">/</td>
+					</tr>
+				</c:when>
+				<c:when test="${!empty invite}">
+				<c:forEach var="invite" items="${invite}">
+				<tr>
+					<td style="width: 450px;"><c:out value="${invite.spaceName}(${invite.name})"></c:out></td>
 				
-<%-- 				</c:forEach> --%>
-<%-- 				</c:when> --%>
-<%-- 			</c:choose> --%>
+					<td style="width: 100px;">
+					<button>수락</button><button>거절</button>
+					</td>
+				</tr>
+				
+				</c:forEach>
+				</c:when>
+			</c:choose>
 			
 			</tbody>
 		</table>

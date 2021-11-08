@@ -22,7 +22,11 @@
 	</select>
 	
 <!-- 	<select id="inviteList" parameterType="String" resultType="com.work.dto.InviteList"> -->
-		
+<!-- 			select SPACE.SPACE_NAME, MEMBER.NAME -->
+<!-- 	    FROM MEMBER, SPACE, INVITE -->
+<!-- 	    	WHERE space.manager_no=member.member_no -->
+<!-- 	    	AND INVITE.SPACE_NO=SPACE.SPACE_NO -->
+<!-- 	    	AND INVITE.ID = #{id} -->
 <!-- 	</select> -->
 	
 </mapper>

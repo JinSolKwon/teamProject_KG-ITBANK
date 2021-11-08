@@ -1,10 +1,13 @@
 package com.work.dto.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.work.dto.InviteList;
 import com.work.dto.MemberVO;
 
 @Repository 
@@ -25,5 +28,10 @@ public class MemberDaoImpl implements MemberDao{
 	@Override
 	public MemberVO login(MemberVO vo) throws Exception {
 		return sql.selectOne("login", vo);
+	}
+	
+	@Override
+	public List<InviteList> inviteList(String id) throws Exception{
+		return sql.selectList("inviteList", id);
 	}
 }

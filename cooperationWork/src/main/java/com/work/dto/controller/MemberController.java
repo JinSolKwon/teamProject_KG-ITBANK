@@ -27,7 +27,7 @@ public class MemberController {
 	
 	@Inject
 	MemberService service;
-//	InviteService invite;
+	
 	
 	
 	//회원가입
@@ -70,8 +70,8 @@ public class MemberController {
 		System.out.println(session.getAttribute("member"));
 		System.out.println(session.getAttribute("id"));
 		
-//		List<InviteList> inv = invite.inviteList(login.getId());
-//		model.addAttribute("invite",inv);
+		List<InviteList> inv = service.inviteList((String)session.getAttribute("id"));
+		model.addAttribute("invite",inv);
 		
 		return "/member/login";
 	}

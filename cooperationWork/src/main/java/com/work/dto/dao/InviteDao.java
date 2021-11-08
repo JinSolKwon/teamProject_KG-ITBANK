@@ -11,5 +11,5 @@ public interface InviteDao {
 	
 	public int selectMemberNo(String id);
 	
-//	public List<InviteList> inviteList(String id);
+//	public List<InviteList> inviteList(String id) throws Exception;
 }

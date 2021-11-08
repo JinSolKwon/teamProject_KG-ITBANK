@@ -58,5 +58,6 @@
 		<input type="button" name="adding" value="추가" onclick="addRow()">
 		<input type="button" name="delete" value="삭제" onclick="delRow()">
 	</form>
+	 
 </body>
 </html>
