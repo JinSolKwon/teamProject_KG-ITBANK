@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.work.dto.InviteList;
 import com.work.dto.MemberVO;
+import com.work.dto.SpaceMemberVO;
 
 public interface MemberService {
 	
@@ -14,4 +15,7 @@ public interface MemberService {
 	public MemberVO login(MemberVO vo) throws Exception;
 	
 	public List<InviteList> inviteList(String id) throws Exception;
+	
+	//초대 수락(insert)
+	public void memberInsert(SpaceMemberVO vo) throws Exception;
 }

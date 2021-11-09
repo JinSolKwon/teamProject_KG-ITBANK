@@ -17,7 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.work.dto.InviteList;
 import com.work.dto.MemberVO;
-import com.work.dto.service.InviteService;
 import com.work.dto.service.MemberService;
 
 @Controller
@@ -48,7 +47,7 @@ public class MemberController {
 	
 	//로그인
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
-	public String login(Model model,MemberVO vo, HttpServletRequest req, HttpServletResponse res, RedirectAttributes rttr) throws Exception{
+	public String login(Model model,MemberVO vo,  HttpServletRequest req, HttpServletResponse res, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
 		
 		
@@ -71,7 +70,11 @@ public class MemberController {
 		System.out.println(session.getAttribute("id"));
 		
 		List<InviteList> inv = service.inviteList((String)session.getAttribute("id"));
+		
 		model.addAttribute("invite",inv);
+		
+		
+
 		
 		return "/member/login";
 	}
@@ -84,5 +87,27 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+	
+//	@RequestMapping(value = "/member/inviteMember", method=RequestMethod.GET)
+//	public void getMemberInsert(SpaceMemberVO vo) throws Exception{
+//		logger.info("get MemberInsert");
+//	}
+//	@RequestMapping(value = "/member/inviteMember", method=RequestMethod.POST)
+//	public String postMemberInsert(Model model, SpaceMemberVO vo, HttpServletRequest req,HttpSession session) throws Exception{
+//		logger.info("post MemberInsert");
+//		
+//		session = req.getSession();
+//		int spaceNoInfo = (int)session.getAttribute("space_no");
+//		vo.setSpaceNo(spaceNoInfo);
+//		int memberInfo = (int)session.getAttribute("member_no");
+//		vo.setMemberNo(memberInfo);
+//		
+//		System.out.println(vo);
+//		
+//		service.memberInsert(vo);
+//		model.addAttribute("sm", vo);
+//		
+//		return "/member/login";
+//	}
 		
 }

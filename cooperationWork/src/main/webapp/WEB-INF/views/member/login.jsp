@@ -17,6 +17,9 @@
 	crossorigin="anonymous">
 <link href="${pageContext.request.contextPath}/resources/css/space.css" rel="stylesheet" type="text/css">
 <title>TASKWITH</title>
+
+
+
 </head>
 <body>
 	<%@ include file="../include/spaceMenu.jsp"%>
@@ -90,10 +93,16 @@
 				<c:forEach var="invite" items="${invite}">
 				<tr>
 					<td style="width: 450px;"><c:out value="${invite.spaceName}(${invite.name})"></c:out></td>
-				
 					<td style="width: 100px;">
-					<button>수락</button><button>거절</button>
+				
+						<form method="post" action="<c:url value="/member/memberInsert" /> ">
+							<input type="submit" value="수락">
+							<input type="hidden" value="spaceNo" name="space_no"> 
+							<input type="hidden" value="memberNo" name="member_no">
+						</form>				
+					<button>거절</button>
 					</td>
+					
 				</tr>
 				
 				</c:forEach>

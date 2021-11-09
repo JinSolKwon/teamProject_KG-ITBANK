@@ -25,4 +25,9 @@
 	    	AND INVITE.SPACE_NO=SPACE.SPACE_NO
 	    	AND INVITE.ID = #{id}
 	</select>
+	
+	<select id="spaceList" parameterType="int" resultType="com.work.dto.spaceList">
+			
+			
+	</select>
 </mapper>

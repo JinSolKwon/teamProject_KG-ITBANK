@@ -58,6 +58,8 @@
 		<input type="button" name="adding" value="추가" onclick="addRow()">
 		<input type="button" name="delete" value="삭제" onclick="delRow()">
 	</form>
-	 
+	 <p>
+  	<a href="/dto/member/login">처음으로</a>
+	 </p>
 </body>
 </html>

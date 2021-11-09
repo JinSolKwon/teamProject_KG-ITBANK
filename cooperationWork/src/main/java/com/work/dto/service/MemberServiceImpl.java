@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.work.dto.InviteList;
 import com.work.dto.MemberVO;
+import com.work.dto.SpaceMemberVO;
 import com.work.dto.dao.MemberDao;
 
 @Service
@@ -32,5 +33,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public List<InviteList> inviteList(String id) throws Exception{
 		return dao.inviteList(id);
+	}
+	
+	@Override
+	public void memberInsert(SpaceMemberVO vo) throws Exception {
+		System.out.println("SpaceMemberService:"+vo);
+		dao.memberInsert(vo);
 	}
 }

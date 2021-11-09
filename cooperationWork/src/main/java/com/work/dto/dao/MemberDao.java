@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.work.dto.InviteList;
 import com.work.dto.MemberVO;
+import com.work.dto.SpaceMemberVO;
 
 public interface MemberDao {
 	
@@ -13,4 +14,6 @@ public interface MemberDao {
 	public MemberVO login(MemberVO vo) throws Exception;
 	
 	public List<InviteList> inviteList(String id) throws Exception;
+	
+	public void memberInsert(SpaceMemberVO vo) throws Exception;
 }

@@ -17,4 +17,6 @@ public class SpaceMemberServiceImpl implements SpaceMemberService{
 		System.out.println("SpaceMemberService:"+vo);
 		dao.memberInsert(vo);
 	}
+	
+	
 }
