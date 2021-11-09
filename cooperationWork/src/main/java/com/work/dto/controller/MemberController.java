@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.work.dto.InviteList;
 import com.work.dto.MemberVO;
+import com.work.dto.SpaceList;
 import com.work.dto.service.MemberService;
 
 @Controller
@@ -42,6 +43,8 @@ public class MemberController {
 		
 		service.register(vo);
 		
+		
+		
 		return "redirect:/";
 	}
 	
@@ -64,17 +67,19 @@ public class MemberController {
 			session.setAttribute("member", login);
 			session.setAttribute("member_no", login.getMemberNo());
 			session.setAttribute("id", login.getId());
+			session.setAttribute("name", login.getName());
 		}
 		System.out.println(session.getAttribute("member_no"));
 		System.out.println(session.getAttribute("member"));
 		System.out.println(session.getAttribute("id"));
+		System.out.println(session.getAttribute("name"));
+		
 		
 		List<InviteList> inv = service.inviteList((String)session.getAttribute("id"));
-		
 		model.addAttribute("invite",inv);
 		
-		
-
+		List<SpaceList> space = service.spaceList((int)session.getAttribute("member_no"));
+		model.addAttribute("space",space);
 		
 		return "/member/login";
 	}

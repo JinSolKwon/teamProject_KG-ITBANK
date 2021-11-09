@@ -5,8 +5,8 @@
 <mapper namespace="com.work.dto.dao.MemberDaoImpl">
 	<!-- 회원가입 -->
 	<insert id="register" parameterType="com.work.dto.MemberVO">
-		INSERT INTO MEMBER(	MEMBER_NO, ID, PASSWORD)
-			VALUES(MEMBER_NO_SEQ.NEXTVAL, #{id}, #{password})
+		INSERT INTO MEMBER(	MEMBER_NO, ID, NAME, PASSWORD)
+			VALUES(MEMBER_NO_SEQ.NEXTVAL, #{id}, #{name} ,#{password})
 	</insert>
 	
 	<!-- 로그인 -->
@@ -26,8 +26,12 @@
 	    	AND INVITE.ID = #{id}
 	</select>
 	
-	<select id="spaceList" parameterType="int" resultType="com.work.dto.spaceList">
-			
+	<select id="spaceList" parameterType="int" resultType="com.work.dto.SpaceList">
+			select SPACE.SPACE_NAME, MEMBER.NAME
+    FROM MEMBER, SPACE, SPACE_MEMBER
+    WHERE space_member.space_no = space.space_no
+    and member.member_no = space.manager_no
+    and space_member.member_no = #{memberNo}
 			
 	</select>
 </mapper>

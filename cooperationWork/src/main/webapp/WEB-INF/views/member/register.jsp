@@ -15,7 +15,10 @@
   <label for="password">패스워드</label>
   <input type="password" id="password" name="password" />
  </p>
- 
+ <p>
+  <label for="name">이름</label>
+  <input type="text" id="name" name="name" />
+ </p> 
  <p>
    <button type="submit" id="submit" >가입</button>  
  </p>

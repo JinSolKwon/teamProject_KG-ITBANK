@@ -5,7 +5,15 @@ public class MemberVO {
 	private int memberNo;
 	private String id;
 	private String password;
+	private String name;
 	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getMemberNo() {
 		return memberNo;
 	}
@@ -27,14 +35,16 @@ public class MemberVO {
 	
 	public MemberVO() {}
 	
-	public MemberVO(int memberNo, String id, String password) {
+	public MemberVO(int memberNo, String id, String password, String name) {
 		super();
 		this.memberNo = memberNo;
 		this.id = id;
 		this.password = password;
+		this.name = name;
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [memberNo=" + memberNo + ", id=" + id + ", password=" + password + "]";
+		return "MemberVO [memberNo=" + memberNo + ", id=" + id + ", password=" + password + ", name=" + name + "]";
 	}
+	
 }

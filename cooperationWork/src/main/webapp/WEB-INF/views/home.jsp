@@ -17,6 +17,9 @@
 			<label for="password">패스워드</label>
 			<input type="password" id="password" name="password" />
 		</p>
+		<p>
+			<input type="hidden" value="name" name="name" />
+		</p>
 		<p><a href="/dto/member/login"><button type="submit">로그인</button></a></p>
 		<p><a href="/dto/member/register">회원가입</a></p>
 	</form>

@@ -46,32 +46,25 @@
 		</table>
 	</div>
 	<div id="scroll">
-		<table class="spaceList">
+		<table class="invitelist">
 			<tbody>
 			
-			<c:choose>
-				<c:when test="${empty space}">
-					<tr>
-						<td style="width: 450px;">입장가능한 워크스페이스가 없습니다.</td>
-						<td style="width: 100px;">입장 및 삭제</td>
-					</tr>
-				</c:when>
-				<c:when test="${!empty space}">
-				<c:forEach var="space" items="${space}">
-					<tr>
-						<td style="width: 450px;"><c:out value="${space.spaceName}(${space.name})"></c:out></td>
-						<td style="width: 100px;">
-						<a href="입장 후 스페이스" type="button">입장</a>
-						
-						
-						</td>
-					</tr>
-					
-					
-				</c:forEach>
-				</c:when>
-			</c:choose>
-				
+				<tr>
+					<td style="width: 450px;">새 워크스페이스1(관리자 이름)</td>
+					<td style="width: 100px;">입장 및 삭제</td>
+				</tr>
+				<tr>
+					<td>제라툴 협업툴(관리자 이름)</td>
+					<td>입장 및 삭제</td>
+				</tr>
+				<tr>
+					<td>ZERATUL PROJECT(관리자 이름)</td>
+					<td>입장 및 삭제</td>
+				</tr>
+				<tr>
+					<td>캐리건 협업(관리자 이름)</td>
+					<td>입장 및 삭제</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -102,7 +95,7 @@
 					<td style="width: 450px;"><c:out value="${invite.spaceName}(${invite.name})"></c:out></td>
 					<td style="width: 100px;">
 				
-						<form method="post" action="<c:url value="/member/memberInsert" /> ">
+						<form method"src/main/webapp/WEB-INF/views/member/login2.jsp"="post" action="<c:url value="/member/memberInsert" /> ">
 							<input type="submit" value="수락">
 							<input type="hidden" value="spaceNo" name="space_no"> 
 							<input type="hidden" value="memberNo" name="member_no">

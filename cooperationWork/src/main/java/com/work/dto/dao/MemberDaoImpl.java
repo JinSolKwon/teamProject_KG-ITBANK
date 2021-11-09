@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.work.dto.InviteList;
 import com.work.dto.MemberVO;
+import com.work.dto.SpaceList;
 import com.work.dto.SpaceMemberVO;
 
 @Repository 
@@ -39,5 +40,10 @@ public class MemberDaoImpl implements MemberDao{
 	@Override
 	public void memberInsert(SpaceMemberVO vo) throws Exception {
 		sql.insert("memberInsert", vo);
+	}
+	
+	@Override
+	public List<SpaceList> spaceList(int memberNo) throws Exception {
+		return sql.selectList("spaceList", memberNo);
 	}
 }

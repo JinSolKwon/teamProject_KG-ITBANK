@@ -1,12 +1,12 @@
 package com.work.dto;
 
-public class spaceList {
+public class SpaceList {
 	private String spaceName;
 	private String name;
 	
-	public spaceList() {}
+	public SpaceList() {}
 	
-	public spaceList(String spaceName, String name) {
+	public SpaceList(String spaceName, String name) {
 		super();
 		this.spaceName = spaceName;
 		this.name = name;
