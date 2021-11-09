@@ -11,45 +11,53 @@
 <script type="text/javascript">
 	var ws;
 	window.onload = function(){
-		getRoom();
+		getGRoom();
+		getPRoom();
 		createRoom();
 	}
 
-	function getRoom(){
-		commonAjax('/getRoom', "", 'post', function(result){
+	function getGRoom(){
+		commonAjax('/getGRoom', "", 'post', function(result){
+			createChatingRoom(result);
+		});
+	}
+	function getPRoom(){
+		commonAjax('/getPRoom', "", 'post', function(result){
 			createChatingRoom(result);
 		});
 	}
 	
 	function createRoom(){
 		$("#createRoom").click(function(){
-			var msg = {	room_name : $('#room_name').val()	};
+			var msg = {	roomname : $('#roomname').val()	};
 
 			commonAjax('/createRoom', msg, 'post', function(result){
 				createChatingRoom(result);
 			});
 
-			$("#room_name").val("");
+			$("#roomname").val("");
 		});
 	}
 
-	function goRoom(number, name){
-		location.href="/moveChating?room_name="+name+"&"+"room_no="+number;
+	function goRoom(roomno, rn){
+		location.href="/moveChating?roomname="+name+"&"+"roomno="+roomno;
 	}
 
 	function createChatingRoom(res){
 		if(res != null){
 			var tag = "<tr><th class='num'>순서</th><th class='room'>방 이름</th><th class='go'></th></tr>";
 			res.forEach(function(d, idx){
-				var rn = d.room_name.trim();
-				var room_no = d.room_no;
+				var rn = d.roomname.trim();
+				console.log(rn)
+				var roomno = d.gchatroomno;
+				console.log(roomno);
 				tag += "<tr>"+
 							"<td class='num'>"+(idx+1)+"</td>"+
 							"<td class='room'>"+ rn +"</td>"+
-							"<td class='go'><button type='button' onclick='goRoom(\""+room_no+"\", \""+rn+"\")'>참여</button></td>" +
+							"<td class='go'><button type='button' onclick='goRoom(\""+roomno+"\", \""+rn+"\")'>참여</button></td>" +
 						"</tr>";	
 			});
-			$("#roomList").empty().append(tag);
+			$("#groomList").empty().append(tag);
 		}
 	}
 
@@ -73,13 +81,13 @@
 	<div class="container">
 		<h1>채팅방</h1>
 		<div id="roomContainer" class="roomContainer">
-			<table id="roomList" class="roomList"></table>
+			<table id="groomList" class="groomList"></table>
 		</div>
 		<div>
 			<table class="inputTable">
 				<tr>
 					<th>방 제목</th>
-					<th><input type="text" name="room_name" id="room_name"></th>
+					<th><input type="text" name="roomname" id="roomname"></th>
 					<th><button id="createRoom">방 만들기</button></th>
 				</tr>
 			</table>

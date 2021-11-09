@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.work.dto.dao.ChatDAOImpl">
+
+	<select id="selectNum" resultType="TestBeanAlias">
+		SELECT * FROM TEST
+	</select>
+	
+	<insert id="insertPRoom" parameterType="int">
+		INSERT INTO PCHAT_ROOM (
+		PCHAT_ROOM_NO, SPACE_NO
+		) 
+		VALUES(
+		PCHAT_ROOM_NO_SEQ.NEXTVAL, #{spaceno}
+		)
+	</insert>
+	
+	<insert id="insertGRoom" parameterType="com.work.dto.vo.GChatRoom">
+		INSERT INTO GCHAT_ROOM (GCHAT_ROOM_NO, SPACE_NO, ROOM_NAME)
+		VALUES(GCHAT_ROOM_NO_SEQ.NEXTVAL, #{spaceno}, #{roomname})
+		
+	</insert>
+	
+	<select id="selectPRoom" resultType="com.work.dto.vo.PChatRoom">
+		SELECT PCHAT_ROOM_NO AS pchatRoomNO, SPACE_NO AS SPACENO FROM PCHAT_ROOM WHERE SPACE_NO = #{spaceno}
+	</select>
+	
+	<select id="selectGRoom" resultType="com.work.dto.vo.GChatRoom">
+		SELECT GCHAT_ROOM_NO AS GCHATROOMNO, SPACE_NO AS SPACENO, ROOM_NAME AS ROOMNAME fROM GCHAT_ROOM WHERE SPACE_NO = #{spaceno}
+	</select>
+	
+	<insert id="insertPRoomMember" parameterType="com.work.dto.vo.PChatRoomMember">
+		INSERT INTO PCHAT_ROOM_MEMBER (
+		PCHAT_ROOM_MEMBER_NO, PCHAT_ROOM_NO, SPACE_MEMBER_NO)
+		VALUES(
+		PCHAT_ROOM_MEMBER_NO_SEQ.NEXTVAL, #{pchatroomno,}, #{spacememberno})
+		
+	</insert>
+	
+	<insert id="insertGRoomMember" parameterType="com.work.dto.vo.GChatRoomMember">
+		INSERT INTO GCHAT_ROOM_MEMBER (GCHAT_ROOM_MEMBER_NO, GCHAT_ROOM_NO, SPACE_MEMBER_NO)
+		VALUES(GCHAT_ROOM_MEMBER_NO_SEQ.NEXTVAL, #{gchatroomno}, #{spacememberno})
+	</insert>
+	
+	
+</mapper>

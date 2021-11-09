@@ -75,7 +75,7 @@
 					if(d.sessionId == $("#sessionId").val()){
 						$("#chating").append("<p class='me'>나 :" + d.msg + "</p>");	
 					}else{
-						$("#chating").append("<p class='others'>" + d.userName + " :" + d.msg + "</p>");
+						$("#chating").append("<p class='others'>" + d.user_name + " :" + d.msg + "</p>");
 					}
 						
 				}else{
@@ -92,16 +92,17 @@
 	}
 
 	function chatName(){
-		var userName = $("#userName").val();
-		if(userName == null || userName.trim() == ""){
+		var user_name = $("#user_name").val();
+		console.log('user_name',user_name);
+		if(user_name == null || user_name.trim() == ""){
 			alert("사용자 이름을 입력해주세요.");
-			$("#userName").focus();
+			$("#user_name").focus();
 		}else{
 			wsOpen();
 			$("#yourName").hide();
 			$("#yourMsg").show();
 		}
-		console.log('userName',userName);
+		console.log('user_name',user_name);
 	}
 
 	function send() {
@@ -109,7 +110,7 @@
 			type: "message",
 			room_no: $("#room_no").val(),
 			sessionId : $("#sessionId").val(),
-			userName : $("#userName").val(),
+			user_name : $("#user_name").val(),
 			msg : $("#chatting").val()
 		}
 		ws.send(JSON.stringify(option))
@@ -129,7 +130,7 @@
 			<table class="inputTable">
 				<tr>
 					<th>사용자명</th>
-					<th><input type="text" name="userName" id="userName"></th>
+					<th><input type="text" name="user_name" id="user_name"></th>
 					<th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
 				</tr>
 			</table>
@@ -140,7 +141,7 @@
 					<th>메시지</th>
 					<th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
 					<th><button onclick="send()" id="sendBtn">보내기</button></th>
-					<a href="${pageContext.request.contextPath}/upload?room_no=${room_no}&&userName=${userName}" ><button type="button" class="navyBtn">업로드</button></a>
+					<a href="${pageContext.request.contextPath}/upload?room_no=${room_no}&&user_name=${user_name}" ><button type="button" class="navyBtn">업로드</button></a>
 					<a href="${pageContext.request.contextPath}/download"><button type="button" class="navyBtn">다운로드</button></a>
         
 				</tr>

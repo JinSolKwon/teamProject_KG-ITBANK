@@ -1,8 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+
+
+
+
+	<!-- mybatis를 위해 새로 작성하였습니다. -->
+
+	<!-- db.properties의 설정 값을 읽어서 setting -->
+	<bean id="dataSourceSpied"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:XE" />
+		<property name="username" value="cooperationWork" />
+		<property name="password" value="1234" />
+	</bean>
+	<bean id="dataSource"
+		class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="dataSourceSpied" />
+		<property name="logFormatter">
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE" />
+				<property name="sqlPrefix" value="SQL : " />
+			</bean>
+		</property>
+	</bean>
+
+
+
+<!-- SqlSession -->
+<bean id="sqlSessionFactory"
+	class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource" />
+
+	<!-- MyBatis 설정 파일의 위치를 지정합니다. -->
+	<property name="configLocation"
+		value="classpath:/mybatis-config.xml" /> <!-- SQL 파일의 위치를 지정합니다. -->
+	<property name="mapperLocations"
+		value="classpath:/mappers/*.xml" />
+</bean> <!-- SqlSession -->
+
+<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
+	destroy-method="clearCache">
+	<constructor-arg name="sqlSessionFactory"
+		ref="sqlSessionFactory" />
+</bean>
+
+
+<!-- 아노테이션 기반의 트랜잭션을 사용합니다. -->
+<tx:annotation-driven
+	transaction-manager="transactionManager" />
+
+
+
 </beans>
